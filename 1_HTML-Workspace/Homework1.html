@@ -10,12 +10,10 @@
 
         </style>
     </head>
-    <body>
-        <table>
-            
+    <body>          
             <form action="">
-                    <fieldset>
-                <legend ><h4>회원가입</h4></legend>
+                <fieldset>
+                <legend><h4>회원가입</h4></legend>
               
                 이용약관동의(필수)
                 <textarea style="overflow:scroll; border-style: solid; width:350px; height:200px;">여러분 환영합니다.네이버 서비스 및 제품(이하 '서비스')을 이용해 주셔서 갑사합니다 본약관은 다양한 네이버서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버주식회사(이하 '네이버')와 이를 이용하는 네이버 서비스 회원 또는 비회원과의 관계를 설명하면 아울러 여러분의 네이버서비스 이용에 도움이 될 수있는 유익한 정보를 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 블라블라블라 어쩌구저쩌구 
@@ -35,9 +33,10 @@
                 <button id="확인">확인</button>
                 </fieldset>
             </form>
+
             <form action="" method="get">
-                <filedset style="border:1 soild">
-                    <legend ><h4>회원가입 양식</h4></legend>
+                <filedset name=" 회원가입양식">
+                <legend><h4>회원가입 양식</h4></legend>
                     <div name="idinput"> *아이디 <br>
                         <input type="text" name="userId" placeholder="영문 소문자,대문자 특수기호(_,-)5~20" required>
                         <button name="checkId" >중복확인</button>
@@ -48,7 +47,7 @@
                     <div name="passwordInput"> *비밀번호 재확인<br>
                         <input type="passwordd" name="userPwd" placeholder="영문,숫자,특수문자 8~15" required>
                     </div name="JumiNumInput">*주민등록번호<br>
-                       <input type="number" name="RearJnum" pattern="\d*" maxlength="6" style="width:80px" required>-
+                       <input type="text" name="RearJnum" pattern="\d*" maxlength="6" style="width:80px" required>-
                        <input type="passwordd" name="RearJnum" maxlength="7" style="width:80px" required>
                     <div name="GenderInput">성별<br>
                         <input type="radio" name="gender" value="noneSelect"> 선택하지 않음
@@ -80,17 +79,15 @@
                             <option value="018">018</option>
                             <option value="019">019</option>
                         </select> -
-                        <input type="text" name="secondNum" maxlength="4"  title="휴대전화 중간자리" style="width:60"> -
-                      <input type="text" name="finalNum" maxlength="4"  title="휴대전화 뒷자리" style="width:60">
+                        <input type="text" name="secondNum" pattern="\d*" maxlength="4"  title="휴대전화 중간자리" style="width:60"> -
+                      <input type="text" name="finalNum" pattern="\d*" maxlength="4"  title="휴대전화 뒷자리" style="width:60">
                     </div>
                     </div name="finish">
                         <button name="reset">초기화</button>
                         <button name="SignIn">가입하기</button>
                     <div>
                 </filedset>
-
             </form>
-
     </body>
 
 
