@@ -160,6 +160,7 @@
                 글내용 : <textarea name="content" colse="30" rows="10" style="resize: none;"></textarea>
                 <br>
                 <input type="submit" value="작성">
+                
             </form>
         <h2> select 태그와 option태그</h2>
         <p>
@@ -168,17 +169,20 @@
             -각가의 option에 value 속성값을 명시했을경우 value값이 전달됨<br>
             -만일, 명시 안했을 경우 기본적으로 option태그의 content영역의 값이 넘어감.
         </p>
-        
+        <form action="test.do">
         전화번호 : 
-        <select>
+        <select name="frontnum">
             <option value="010">010</option>
             <option  value="011">011</option>
             <option  value="017">017</option>
-            <option value="018">018</option>
-            <option  value="019">019</option>
+            <option>018</option>
+            <option  value="018">019</option>
             <option selected>선택안함</option>
         </select>
-        <input type="text" size="8">
+        <input type="number" name="rearnum" size="8">
+        <button type="submit">ss</button>
+        </form>
+    </form>
         <h4>HTML5에서 새로 추가된 기능 datalist</h4>
         <p>
             -datalist : 목록에 없더라도 직접 text상자에 값을 기술해 넘길수 있다.
