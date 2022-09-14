@@ -13,10 +13,45 @@
             font-family: 고딕체;
         }
         #ff3{
-            font-family: 경민체 , 궁서체;
+            font-family: 경민체 ,경민체2,경민체3, 궁서체;
             /* 앞에 제시한 폰트가 없으면 뒤에 있는 있는 녀석으로 대체로 사용하는것이다. */
         }
+        #web-font{
+            font-family: 'Noto Sans KR',sans-serif
+        }
+        #fsP{
+            font-size:30px;
+        }
+        #fs1{
+            font-size:30px;
+        }
+        #fs2{
+            font-size:80%;
+        }
+        #fs3{
+            font-size:1.1em
+        }
+        #id1{
+            font-size: 30px;
+            font-weight: normal;
+        }
+        #id2{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #id3{
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        #id4{
+            font-size: 30px;
+            font-weight: lighter;
+        }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    >
 </head>
 <body>
     <h1>글꼴 관련 스타일 속성(font)</h1>
@@ -28,5 +63,62 @@
     <p id="ff1">글꼴테스트1</p>
     <p id="ff2">글꼴테스트2</p>
     <p id="ff3">글꼴테스트3</p>
+
+    <hr>
+    <h3>외부 웹폰트 사용하는 방법.</h3>
+    <p>
+        웹폰트제공사이트:
+        <a href="http://fonts.google.com" target="_blank">구글웹폰트</a>
+        
+    </p>
+    
+    <p id="web-font">
+        notoSansTest노토산트테스트입니다.
+    </p>
+    <hr>
+    <h3>font-size:글꼴의 크기를 변경할때 사용</h3>
+    <pre>
+        선택자{font-size:크기(px/em/%);}
+
+    </pre>
+    <!-- ul>li#fs$*3 -->
+    <ul id ="fsP">부모크기에 비례해서 크기가 변한다
+        <li id="fs1">고정크기 px테스트</li>
+        <li id="fs2">가변크기% 테스트</li>
+        <li id="fs3">가변크기 em테스트</li>
+        <li>응애</li>
+        <!-- 부모 폰트 사이즈 기준으로 크기가 바뀜!-->
+    </ul>
+    <hr>
+    <h3>font-weight</h3>
+    <pre>
+        선택자{
+            font-weight : normal/bold/bolder/ligher/100/400/900
+        }굵게 얇게 등
+    </pre>
+    <ul>
+        <li id="id1">원래굵기</li>
+        <li id="id2">굵은글꼴</li>
+        <li id="id3">원래굵기 보다 더 가늘게</li>
+        <li id="id4">원래굵기보다 더 가늘게</li>
+    </ul>
+    <hr>
+    
+    <h3>    font-variant : 텍스트 문구를 작은 대문자로 변경할때 사용<h3>
+    
+    <p  style="font-variant: small-caps;"> hi, I Love You</p>
+    <p  style="font-variant: normal;">i love you</p>
+    <h3>
+        font-style : 텍스트 문구를 기울이고자 할때 사용
+    </h3>
+    <ul>
+        <li style="font-style:italic">italic : 기울임 글꼴</li>
+        <li style="font-style : oblique">oblique : 기울임 글꼴(글자 자체를 기울이는것이다.)</li>
+    </ul>
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  
+
 </body>
 </html>
