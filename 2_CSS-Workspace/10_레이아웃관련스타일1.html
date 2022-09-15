@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃관련스타일1</title>
+    <style>
+        .sizetest{
+            border:solid red 10px;
+        }
+        #test1{ 
+            width: 300px;
+            height: 300px;
+        }
+        #test2{
+            width:60%;
+            height:300px;
+        }   
+        div[class^=display-test]{
+            border:1px solid black;
+            width:150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>레이아웃관련 스타일 </h1>
+    
+    <h3>width,height</h3>
+    <p>
+        content 영역의 크기를 조절하는속성.
+
+
+
+    </p>
+    <h4>고정크기(px)<h4>
+        <div class="sizetest" id="test1"></div>
+    <h4>가변크기(%)<h4>
+        <div class="sizetest" id="test2">응</div>
+
+    <p>
+        블럭요소와 인라인 요소의 속성을 변경해서 배치방식을 변경
+    </p>
+    <pre>
+        선택자{
+            display: inline/inline-block/block...;
+        }
+    </pre>
+    <div class="display-test red">첫번째 영역</div>
+    <div class="display-test yellow">두번째 영역</div>
+    <div class="display-test pink">세번째 영역</div>
+    <div class="display-test green">네번째 영역</div>
+    <div class="display-test blue">다섯번째 영역</div>
+    <br><br><br><br><br><br>
+
+
+</body>
+</html>
