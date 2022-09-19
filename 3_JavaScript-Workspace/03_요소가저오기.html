@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소가져오기</title>
+    <style>
+        .area{
+            border:1px solid rgb(255, 199, 199);
+            width:300px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 요소에 접근하기(해당 요소 객체 가져오기)</h1>
+    <h3>1) 아이디로 접근하기</h3>
+    <div class="area" id="area1"></div>
+    <div class="area" id="area2"></div>
+    <input type="button" onclick="aceessId();" value="아이디에 접근하기"/>
+    <button onclick="aceessId();">아이디에 접근하기</button>
+    <script>
+        function aceessId(){
+            //아이도로 요소에 접근할때 :
+            // 1)document.getElementsById("")
+            let area1 = document.getElementById("area1");
+            
+            // 1) document.querySelector("#아이디명")
+            let area2 = document.querySelector("#area2");
+            console.log(area1);
+            console.log(area2);
+
+            area1.innerHTML+="아이디로 접근성공~~<br>";
+            area1.style.backgroundColor="pink";
+            // area1.style.border="10px,solid,blue;";
+            area.style.Color="black";
+
+        }
+    </script>
+    <div class="area" id="area3" style="background-color: red;"></div>
+    <button onclick="accessId2();">클릭마다 색변경</button>
+    <script>
+        // function accessId(){} 오버로딩기능이 없다.
+        let area3=document.getElementById("area3");
+        console.log(area3.style.backgroundColor);
+        let color=area3.style.backgroundColor;
+        function accessId2(){
+            if(color=="red"){
+                area3.style.backgroundColor="yellow";
+                color=area3.style.backgroundColor;
+            }else if(color=="yellow"){
+                area3.style.backgroundColor="red";
+                color=area3.style.backgroundColor;
+            }
+        }
+    </script>
+    <h2>2) 태그명으로 접근하기</h2>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <button onclick="accessTagName();">버튼이다</button>
+    <script>
+
+        function accessTagName(){
+            //태그명으로 요소에 접근
+            // document.getElementsByTagName("태그명")
+            //객체가 여러개기때문에 배열에 담아서 반환
+            //let arr=[1,2,3,4,5];(자바스크립트식 배열)
+            let arr=document.getElementsByTagName("li");
+            console.log(arr);
+            let arr2=document.querySelectorAll("li");
+            console.log(arr2);
+            // arr[0].innerHTML="안녕하세요";
+            let blueColor=50;
+            for(let i=0;i<arr.length;i++){
+                arr[i].innerHTML = "안녕하세요~"+(i+1);
+                // arr[i].style.backgroundColor="rgb(130,220,"+ blueColor+")";
+                arr[i].style.backgroundColor=`rgb(255, 199, ${blueColor} )`;//' 이게 아니라 `다.
+                blueColor+=50;
+
+            }
+        }
+
+    </script>
+    <h3>3) name속성값을 ㅗ접근하기</h3>
+    <form action="">
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" name="hobby" value="game" id="game"><label for="game">게임</label>
+            <input type="checkbox" name="hobby" value="music" id="music"><label for="music">음악</label>
+            <input type="checkbox" name="hobby" value="hiking" id="hiking"><label for="hiking">등산</label>
+            <input type="checkbox" name="hobby" value="book" id="book"><label for="Book">독서</label>
+            <input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie">영화</label>
+            <input type="checkbox" name="hobby" value="health" id="health"><label for="health">헬스</label>
+        </fieldset>
+    </form>
+    <br>
+    <button onclick="accessName();">name으로 접근</button>
+    <script>
+        function accessName(){
+            //name속성값으로 접근
+            //document.getElementsByName("name 속성값");
+            let hobby=document.getElementsByName("hobby");
+            // console.log(hobby);
+            let checkedItem="";
+            for(let i=0;i<hobby.length;i++){
+                if(hobby[i].checked){
+                    checkedItem+=hobby[i].value+"<br>";
+                }
+            }
+            document.getElementById("area3").innerHTML=checkedItem;
+
+            let hobby2=document.querySelectorAll("[name='hobby']:checked");//이게더 편하다.
+            console.log(hobby2);
+
+        }
+    </script>
+    <br>
+    <h3>4)클래스명으로 접근하기</h3>
+    <div class="test">응애</div>
+    <p class="test">응애</p>
+    <ul class="test">
+        <li>응애</li>
+        <li>응애</li>
+    </ul>
+    <pre class="test test2">
+        응애
+    </pre>
+    <button onclick="accessClass();"> 클래스로 접근</button>
+    <script>
+        function accessClass(){
+            //태그와 상관없이 클래스명만 일치하면 가저올수잇다.
+            let test=document.getElementsByClassName("test");
+            console.log(test);
+            let test2=document.querySelectorAll(".test");
+            for(let i=0;i<test2.length;i++){
+                console.log(test2[i]);
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

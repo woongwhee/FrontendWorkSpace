@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와자료형</title>
+    <style>
+        .Big{
+            width: 300px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h3>*변수 선언위치에 따른 전역변수/지역변수</h3>
+    <pre>
+        &lt;script&gt;
+            let 변수명;//전역변수 (global)
+            const 변수명; //상수 (값을할당 바꿀수없음.)
+            var 변수명;//전역벽수 변수 재선언이 된다.
+
+            변수명; //전역변수
+            
+            function 함수명(){
+                let 변수명; //지역변수(local)
+                변수명; //지역변수
+            }
+        &lt;/script&gt;
+
+    </pre>
+    <button onclick="funtest();">ff</button>
+    <script>
+        //var키워드의 문제점
+        //1)영역문제
+        let letTest;
+        if(true){
+            var varTest="var";
+            letTest="let";
+            // let letTest="let";중괄호 안에서 선언하면 밖에서 사용할수 없음.
+        }
+        console.log(varTest);//중괄호 안에서 선언해도 밖에서 사용 할 수 있다.
+        console.log(letTest);
+        //2)중복문제
+        //변수를 같은이름으로 중복해서 선언할수있다. 
+        //이게 엄청난 오류를 야기할수잇음.
+        var user;
+        var user;
+        let user2;
+        // let user2;
+        //에디터단계에서부터 에러가난다.
+
+        //전역변수들은 자동으로 window객체의 필드로 등록.
+        str="전역변수";
+        let str2="let 전역변수";
+        let str2_1="let 전역변수";
+        //window.onload:해당 html문서가 다 로딩되고 나서 곧바로 실행할 함수를 지정
+        window.onload =function(){       
+            let str2="let 지역변수";
+            let str="지역변수"
+            let str3="새로운 지역변수";
+            str4="이건뭘까요";
+            console.log("-----str-----");
+            console.log(str);
+            console.log("-----this.str-----");
+            console.log(this.str);
+            console.log(window.str);
+            //지역변수명과 전역변수명이 동일한 변수 호출시 지역변수 호출.
+            //전역변수에 접근하고자 할때 =? window또는 this
+            console.log("------str2-----");
+            console.log(str2);//지역변수
+            console.log("------this.str2-----");
+            console.log(this.str2);
+            console.log(window.str2);
+            console.log("------str2_1-----");
+            console.log(str2_1);//지역변수
+            console.log("------this.str2_1-----");
+            console.log(this.str2_1);
+            console.log(window.str2_1);
+            //undefined 정의되지않음
+            console.log("------str3-----");
+            console.log(str3);//지역변수
+            console.log(window.str3)
+            console.log(this.str3)
+            console.log("------str4-----");
+            console.log(str4);//지역변수
+            console.log(window.str4)
+            console.log(this.str4)
+
+            let a=0;
+            let b= 3;
+            let c =6;
+            var a2=1,b2=2,c2=4;
+            
+            const CON="33";
+            // CON="55";에러남
+        }
+        function funtest(){
+            console.log(str2)
+        }
+    </script>    
+        <h3>* 자료형</h3>
+    <p>
+        변수 선언시 자료형을 별도로 지정하지 않음(자료형 개념이 없진 않음.)<br>
+        =>변수에 대입되는 값(리터럴)에 따라서 자료형이 자동으로 결정됨.
+    </p>
+    <h4>자바스크립트의 자료형</h4>
+    <ul>
+        <li>string</li>
+        <li>number</li>
+        <li>BigInt(엄청큰수)</li>
+        <li>object</li>
+        <li>finction</li>
+        <li>undefined(초기화가 안된 변수)</li>
+    </ul>
+    <script>
+        function typeTest(){
+            let name="홍길동";
+            let age=20;
+            let superInt=1111111111111111111111111;
+            let flag=true;
+            let user={
+                name: '경민',
+                age : 30,
+                id : 'rudals',
+                123 : '후후',
+                "rudals hi":"33"
+            }
+            let hobby=["영화","음악","낮잠"];
+
+            let testfn=function(){
+                console.log("test");
+            };
+            let noVal;
+            console.log(name);
+            console.log(age);
+            console.log(superInt);
+            console.log(flag);
+            // console.log(user);
+            console.log(hobby);
+            console.log(noVal);
+            // console.log(testFn);
+            //자료형 확인 사용되는 함수 : typeof(변수명);
+            let divEl=document.querySelector("#area");
+            divEl.innerHTML= `age ${age}의 자료형 ${typeof(age)} <br>`;
+            divEl.innerHTML+=`superInt ${superInt}의 자료형 ${typeof(superInt)} <br>`;
+            divEl.innerHTML+=`flag ${flag}의 자료형 ${typeof(flag)} <br>`;
+            divEl.innerHTML+=`hobby ${hobby}의 자료형 ${typeof(user)} <br>`;
+            divEl.innerHTML+=`noVal ${noVal}의 자료형 ${typeof(noVal)} <br>`;
+            //객체의 속성에 접근하는방법
+            divEl.innerHTML+=user.name+"의 나이는 "+user.age+"살이며 아이디는"+user.id+"입니다.<br>";
+            divEl.innerHTML+=user["123"]+"의 나이는 "+user["rudals hi"]+"살이며 아이디는"+user.id+"입니다.";
+            console.log(typeof(null));//object
+            //null은 별도의 자료형을 가지는 특수한 값임
+            //하위호환성을 위해 오류를 수정하지 않고 남겨둔 상황.
+
+            console.log("=========================");
+            
+        }
+    </script>
+    <button onclick="typeTest();">자료형 테스트</button>
+    <div id="area" style="border:1px solid black;">d</div>
+    <h3>문자열 관련메소드</h3>
+    <div class="area Big" id="area1"></div>
+    <script>
+       function showStringMethod(){
+        let str1="Hellow World";
+        let area1=document.getElementById("area1");
+        area1.innerHTML =`str1 ${str1}<br>`;
+        area1.innerHTML +=`str1 ${str1.toUpperCase()}<br>`;
+        area1.innerHTML +=`str1 ${str1.toLowerCase()}<br>`;
+        area1.innerHTML +=`문자열 길이는? ${str1.length}<br>`;
+        for (let i = 0; i < str1.length; i++) {
+           area1.innerHTML+=i+"번째 인덱스" +str1.charAt(i)+"<br>";
+        }
+        //indexof,lastIndexof
+        area1.innerHTML+=str1.indexOf("l")+"<br>";
+        area1.innerHTML+=str1.indexOf("World")+"<br>";
+        area1.innerHTML+=str1.lastIndexOf("l")+"<br>";
+        let str2="사과,바나나,메론,키위,복숭아";
+        let fruits=str2.split(",");
+        area1.innerHTML+="fruits:"+fruits+"<br>";
+        area1.innerHTML+="fruits의자료형"+typeof fruits+"<br>";
+
+        console.log(fruits.join("&") , typeof fruits.join(","));
+        }
+    </script>
+    <button onclick="showStringMethod();">이응</button>
+    <h3>* 수학관련메서드</h3>
+    <button onclick="showMathMethod();">수학</button>
+    <div class="area Big" id="area2"></div>
+    <script>
+        function showMathMethod(){
+            let area2=document.getElementById("area2");
+            area2.innerHTML="절대값 : "+Math.abs(-111)+"<br>";
+            area2.innerHTML+=`랜덤값${Math.random()}<br>`;
+            area2.innerHTML+=`반올림${Math.round(123.767)}<br>`;
+            area2.innerHTML+=`버림${Math.floor(123.756)}<br>`;
+            area2.innerHTML+=`올림${Math.ceil(123.756)}<br>`;
+            area2.innerHTML+=`제곱근${Math.sqrt(4)}<br>`;
+        }
+
+    </script>
+<hr>
+<br><br>
+<h3>*문자열과 숫자간의 산술연산</h3>
+<div class="area Big" id="area3"></div>
+<button onclick="arthmetic();">문자숫자</button>
+<script>
+    function arthmetic(){
+        let test1=7+7;//14
+        let test2=7+"7";//77
+        let test3=7-"7";//0
+        let test4="7"+7;//77
+        let test5="7"-7;//0
+        let test6="7"-"7";//0
+        let test7="7"-7-7;//-7
+        
+        let area3=document.querySelector("#area3");
+
+        area3.innerHTML= test1+"test1<br>"
+        area3.innerHTML+=test2+"test2<br>"
+        area3.innerHTML+=test3+"test3<br>"
+        area3.innerHTML+=test4+"test4<br>"
+        area3.innerHTML+=test5+"test5<br>"
+        area3.innerHTML+=test6+"test6<br>"
+        area3.innerHTML+=test7+"test7<br>"
+        //강제 형변환(문자열=>숫자형)
+        //Number(문자열)
+        //parseInt(문자열)
+        //parseFloat(문자열)
+        let iNum=2;
+        let sNum="3";
+        
+        let test9=iNum+sNum;//23
+        let test10=iNum+Number(sNum);
+        let test11=iNum+parseInt(sNum);
+        let test12=iNum+parseFloat(sNum);
+        area3.innerHTML+=test9+"test9<br>"
+        area3.innerHTML+=test10+"test10<br>"
+        area3.innerHTML+=test11+"test11<br>"
+        area3.innerHTML+=test12+"test12<br>"
+        let fNum=1.234
+        let test13=iNum+fNum;//23
+        let test14=iNum+Number(fNum);
+        let test15=iNum+parseInt(fNum);
+        let test16=iNum+parseFloat(fNum);
+        area3.innerHTML+=test13+"test13<br>";
+        area3.innerHTML+=test14+"test14<br>";
+        area3.innerHTML+=test15+"test15<br>";
+        area3.innerHTML+=test16+"test16<br>";
+    }
+</script>
+
+<hr>
+    
+    정수1 : <input type="number" id="num1"><br>
+    정수2 : <input type="number" id="num2"><br>
+    <button onclick="plus()">결과보기</button>
+    <label id="result"></label><br>
+    <script>
+        function plus(){
+            let num1=document.getElementById("num1").value;
+            let num2=document.querySelector("#num2").value;
+            let result=document.querySelector("#result");
+            let sum=Number(num1)+Number(num2);
+            // let sum=num1*1+num2*1;
+            result.innerHTML+=sum;
+        }
+    </script>
+
+
+<br><br><br><br><br><br><br><br>
+</body>
+</html>
