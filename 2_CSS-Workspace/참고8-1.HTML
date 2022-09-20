@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통합화면</title>
+    <style>
+        html,body{
+            margin: 0;
+			padding: 0;
+            height:100%;
+        }
+        .wrap{
+            border: 1px black solid;
+            width: 1000px;
+            height: 800px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class=header1 id="logo">
+                <img id="logoimg"src="resources/image/kh_logo.jpg" >
+            </div>
+            <div  class=header2 id="search">
+                <form action="test.do" id="search_form">
+                    <div id="search_text">
+                        <input type="text" name="keyword" >
+                    </div>
+                    <div id="search_btn">
+                        <input type="submit" value="검색">
+                    </div>
+                </form>
+            </div>
+            <div class="header3" id="blank">
+
+            </div>
+        </div>
+       
+        <div class="navigator">
+            <ul id="navi">
+                <li id="java"><a href="">Java</a></li>
+                <li id="Oracle"><a href="">Oracle</a></li>
+                <li id="Front-end">
+                    <a href="">Front-end</a>
+                    <ul>
+                        <li id=""><a href="">HTML</a> </li>
+                        <li id=""><a href="">CSS</a> </li>
+                        <li id=""><a href="">JavaScript</a> </li>
+                        <li id=""><a href="">JQuary</a> </li>
+                    </ul>
+                </li>
+            <li id="Sever">
+                <a href="">Server</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><a href="">JSP</a></li>
+                    <li><a href="">Ajax</a></li>
+                </ul>
+            </li>
+            <li id="FrameWork">
+                <a href="">FrameWork</a>
+                <ul>
+                    <li><a href="">MyBatis</a></li>
+                    <li><a href="">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+
+        <div class="content">
+            <div id="content1">
+
+            </div>
+            <div id="content2">
+
+            </div>
+            <div id="content3">
+                <form id="loginform" action="test.do">
+                    <div id="loginInput">
+                        <input type="text" id="id" placeholder="아이디 입력">
+                        <input type="password" id="pwd" placeholder="비밀번호 입력">
+                    </div>
+                     <div id="loginbutton"><button type="submit">로그인</button></div>
+                </form>
+                <div id="login_form_etc">
+                    <a href="">회원가입</a>
+                    <a href="">ID/PWD찾기</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+                <p class="p0">KH정보교육원&nbsp;｜&nbsp;사업자등록번호 : 851-87-00622&nbsp;｜&nbsp;서울 강남 제2014-01호&nbsp;｜&nbsp;대표자 : 양진선&nbsp;｜&nbsp;책임자 : 최홍석&nbsp;｜&nbsp; 개인정보관리책임자 : 양진선</p>
+                <p class="p1">
+                강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F<br>
+                강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F<br>
+                강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F<br>
+                종로지원 : 서울특별시 중구 남대문로 120 대일빌딩 2F,  3F<br>
+                당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩 (구관) 19F, 20F <br>
+                </p>
+                <p class="p2">
+                    Copyright © 1998-2022 KH Information Educational Institute All Right Reserved
+                </p>
+        </div>
+    </div>
+</body>
+</html>
+

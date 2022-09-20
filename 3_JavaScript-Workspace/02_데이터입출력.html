@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입출력</title>
+    <style>
+        .area{
+            border:1px solid black;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트에서의 데이터 입/출력</h1>
+    <!-- 
+        window : 자바스크립트 내장객체, 브라우저 창이 열릴때마다 하나씩 만들어지는 객체.
+                브라우저 창안에 존재하는 모든 요소들의 최상위 객체.
+                (즉 모든곳에 적용되기 때문에 생략 가능).
+                window.alert=> alert, console.log => window.cosole.log
+        document:웹문서마다 하나씩 만들어지는 개체.
+                html문서에 대한 정보를 가지고 있음.;
+     -->
+     <h2>1. eㅔ이터를 출력하는 기본 구문.</h2>
+     <p>
+        1)window.alert("알림창에 출력할 문구")<br>
+        2)window.console.log("콘솔창에 출력할 문구")<br>
+        3)documment.write("화면에 출력할 문구")<br>
+        4) 선택한요소.innerHTML/innerText ="해당요소에 출력할 문구";
+        5) window.confirm("출력할문구");
+        6)window.prompt("제목");
+
+     </p>
+    <h3>3)document.write("화면에 출력할 문구")</h3>
+    <script>
+        function documentWrite(){
+            // document.write("<h2>출력테스트.");
+            // document.write("<b>출력테스트.</b></h2>하이");
+                let html="<table border='1'>";
+                    html+="<tr>";
+                    html+="<td>1</td>"
+                    html+="<td>2</td>";
+                    html+="</tr>";
+                    html+="</tabel>";
+                    document.write(html);
+        }
+    </script>
+    <h3>4)선택한 요소.innerHTML/innerText="해당요소에 출력할 문구";</h3>
+    <div class="area" id="area1">
+        자바스크랩트에서 어떤요소 (element)안의 값을가지고 오거나<br>
+        변경하고자 할때 <b>innerHTML,innerText</b>라는 속성에 접근가능 
+    </div>
+    <button onclick="tagValue()">확인</button>
+    <script>
+        function tagValue(){
+            //특정요소의 값을 가지고 온다거나 변경하고자할때
+            //먼저 해당 요소객체를 가저와서 변수에 담아야함
+            let divEl=document.querySelector("#area1");
+            console.log(divEl);
+            console.dir(divEl);
+            //해당객체의 디렉토리 구조를 보고자 할때 사용.
+            //선택된 요소내에 정보들을 알아내고자 한다면 속성들에 직접접근
+            console.log(divEl.id);
+            console.log(divEl.className);
+        }
+
+    </script>
+
+</body>
+</html>

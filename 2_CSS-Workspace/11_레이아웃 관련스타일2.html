@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .position{
+            border: 1px solid black;
+        }
+        .outer{
+            border : 1px solid blue;
+            position: relative;
+        }   
+        /* 기준이되는요소  (outer)에 posiont relative 로 기준점을 줘서 절대적인 배치가 가능함
+        */
+        /* 만약 지준점을 바로위 의 부모요소로 정하지 않으면 기준점이 자동으로 body로 잡힘 */
+        #first{
+            width: 300px;
+            height:300px;
+            background-color: yellow;
+        }
+        #second{
+            width: 200px;
+            height:200px;
+            background-color: yellowgreen;
+            position :absolute;
+            /* 움직이고자 하는 요소내에 absolute를 지정하면 절대적인 위치로 움직일수 있게함 */
+            top: 50px;
+            left:50px;
+        }
+        #third{
+            width: 100px;
+            height:100px;
+            background-color: red;
+            position:absolute;
+            top : 100px;
+            left : 50px;
+        }
+        .fixed-area{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: fixed;
+            top:0px;
+
+        }
+        .z-test{
+            width:150px;
+            height:150px;
+            border:1px solid black;
+            position: absolute;
+        }
+        #z1{
+            background-color: yellow;
+            top:0px;
+            left:0px;
+        }
+        #z2{
+            background-color: red;
+            top:50px;
+            left:50px;
+            z-index:1000;
+        }
+        #z3{
+            line-height: 150px;
+            background-color: green;
+            top:100px;
+            left:100px;
+            z-index: 1001;
+        }
+        .vis-test{
+            width : 100px;
+            height : 100px;
+        }
+        #v1{
+            visibility: hidden;
+            /* 각자필요한 경우가 있다. */
+        }
+        #v3{
+            display: none;
+        }
+        .float-test{
+            border :1px solid black;
+            width:70px;
+            height:30px;
+            float:left;
+            /* 왼쪽부터 차례대로 블럭을 체우는것? */
+        }
+    </style>
+</head>
+<body>
+    <div class="position">
+        <div class="outer" id="first" >첫번째 자식</div>
+        <div class="outer" id="second">두번째 자식</div>
+        <div class="outer" id="third" >세번째 자식</div>
+    </div>
+    <h3>고정위치</h3>
+    <!-- 배경관련스타일에서 background-attachment : fixed; 같은느낌 -->
+    <!-- <div class="positioning fixed-area"></div> -->
+    <h3>z-index</h3>
+    <p>
+        페이지안에 요소들을 순서대로 위로 쌓는 속성.
+    </p>
+    
+    <div class="outer"><center>
+        <div class="z-test" id="z1">응애</div>
+        <div class="z-test" id="z2">응애</div>
+        <div class="z-test" id="z3">응애</div>
+    <center></div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr>
+        <h3>visibility</h3>
+        <p>페이지에 특정 요소를 보이거나 보이지 않게하는 속성</p>
+    <div class="vis-test" id="v1" style="background-color : yellow"></div>
+    <div class="vis-test" id="v2" style="background-color : red"></div>
+    <div class="vis-test" id="v3" style="background-color : green"></div>
+    <div class="vis-test" id="v4" style="background-color : purple"></div>
+    <div class="vis-test" id="v5" style="background-color : plum"></div>
+    <p>
+        visibility:hidden 속성은 공간은 차지하고 있지만
+        display:none은 공간도 차지하지않음.
+    </p>
+    <h3>float</h3>
+    <p>
+        페이지 내의 요소들을 화면으로부터 띄워서 , 왼쪽 또는 오른쪽으로 배치하는 속성.
+    </p>
+    <div class="float-test">요소1</div>
+    <div class="float-test">요소2</div>
+    <div class="float-test">요소3</div>
+    <div class="float-test">요소4</div>
+    <div class="float-test">요소5</div>
+    <!-- float속성을 쓰게되면 그 이후에 적힌 요소들이 공중에 뜨기 대문에 속성을 중간에 해제 시켜줘야함. -->
+    <br><div>응애</div>
+    <br clear="both"> <!-- float속성을 해제시킨다.-->  
+    <div>응애</div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

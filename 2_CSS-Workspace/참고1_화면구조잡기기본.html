@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면구조잡기 1</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        div{
+            border:1px solid black;
+            box-sizing:border-box;
+            margin:auto;
+            
+            /* 좌우로 자동으로 여백을 조정해줌 */
+        }
+        .wraper{
+            width:90%;
+            height:100%;
+        }
+        /* header content footer */
+        .wraper>div{
+            width: 100%;
+
+        }
+        .header,.footer{
+            height: 20%;
+        }
+        .content{
+            height: 60%;
+            
+        }
+
+        .menu{
+            width:20%;
+            
+        }
+        .content1{
+
+            width:80%;
+            height:60%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="header"><h1><center>Web</center></h1></div>
+        <div class="content">
+            <ul class="menu">
+                <li >>HTML</li>
+                <li >CSS</li>
+                <li >JavaScript</li>
+                <li >JQuary</li>
+            </ul>
+            <div class="content1">
+                <h2>html</h2>
+            </div>
+
+        </div>
+        <div class="footer"> 
+            바닥
+        </div>
+    </div>
+</body>
+</html>

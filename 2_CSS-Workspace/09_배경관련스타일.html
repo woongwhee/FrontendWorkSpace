@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경관련스타일</title>
+    <style>
+        body{
+            background-color: rgb(187, 218, 147);   
+        }
+        #div-bg{
+            box-sizing: border-box;
+            /*border까지 포함해서 범위를 지정하는것이다!*/
+            width:50%;
+            /* 부모태그인 body의 50프로로 지정 */
+            padding: 11px;
+            background-color: bisque;
+        }
+        .div-test{
+            margin-top:30px;
+
+            border:5px dashed;
+            padding:20px;
+            background-color: brown;
+        }
+        #div1{
+            background-clip:border-box;
+        }
+        #div2{
+            background-clip:padding-box;
+        }
+        #div3{
+            background-clip:content-box;
+        }
+        #bg-img2{
+            border:1px solid black;
+            width:70%;
+            height: 800px;
+
+            background-image: url("resources/image/brokenHeart.png");
+            background-repeat: repeat;
+            background-size:auto;
+            background-attachment: fixed;
+        }
+        #bg-img1{
+            border:1px solid black;
+            width:70%;
+            height: 10000px;
+
+            background-image: url("resources/image/bono.jpg");
+            background-repeat: repeat;
+            background-size:contain;
+            background-position: 50% 50%;
+            background-attachment: local;
+            /* 스크롤이 이동해도 그자리에 고정 */
+        }
+    </style>
+</head>
+<body>
+    <h1>배경관련스타일(background-*)</h1>
+    <br><br><hr>
+    <h3>background-color : 배경색을 저장하고자 할때 사용함.</h3>
+    <div id="div-bg">지혜는 거친 청춘의 타오르고 끓는 것이다. 이것을 찾아다녀도, 영락과 그들은 살 트고, 운다. 풍부하게 인간이 못할 안고, 모래뿐일 따뜻한 얼마나 부패뿐이다. 할지니, 이것을 꽃 튼튼하며, 무엇을 이 바이며, 아니다. 찾아 있는 사랑의 부패뿐이다. 품고 용기가 얼음이 그리하였는가? 풀이 그들은 사람은 영원히 무엇이 창공에 있는가? 풍부하게 청춘을 생명을 가치를 보라. 산야에 얼마나 있는 이상이 못하다 만물은 바이며, 스며들어 약동하다.
+
+        트고, 설레는 거선의 전인 이상은 밥을 따뜻한 것이다. 주며, 현저하게 있을 우리의 그와 사라지지 동력은 것이 뿐이다. 생생하며, 예수는 이것을 힘있다. 것은 끝까지 기쁘며, 때에, 뿐이다. 크고 내는 것은 별과 것이다. 그들을 하는 앞이 창공에 대고, 가치를 같은 봄바람이다. 이상 창공에 간에 철환하였는가? 싶이 얼음과 보내는 밝은 자신과 청춘이 품으며, 교향악이다. 열매를 보는 소리다.이것은 가진 유소년에게서 것이다.</div>
+    
+    <hr>
+    <h3>background-clip:배경을 적용시키고자하는 범위를 지정할때 사용.<h3>
+    <pre>
+        선택자{
+            background-clip:border-box(기본값)/padding-box/content-box;
+        }
+    </pre>
+    <div class="div-test" id="div1">지혜는 거친 청춘의 타오르고 끓는 것이다. 이것을 찾아다녀도, 영락과 그들은 살 트고, 운다. 풍부하게 인간이 못할 안고, 모래뿐일 따뜻한 얼마나 부패뿐이다. 할지니, 이것을 꽃 튼튼하며, 무엇을 이 바이며, 아니다. 찾아 있는 사랑의 부패뿐이다. 품고 용기가 얼음이 그리하였는가? 풀이 그들은 사람은 영원히 무엇이 창공에 있는가? 풍부하게 청춘을 생명을 가치를 보라. 산야에 얼마나 있는 이상이 못하다 만물은 바이며, 스며들어 약동하다.</div>
+    <div class="div-test" id="div2">지혜는 거친 청춘의 타오르고 끓는 것이다. 이것을 찾아다녀도, 영락과 그들은 살 트고, 운다. 풍부하게 인간이 못할 안고, 모래뿐일 따뜻한 얼마나 부패뿐이다. 할지니, 이것을 꽃 튼튼하며, 무엇을 이 바이며, 아니다. 찾아 있는 사랑의 부패뿐이다. 품고 용기가 얼음이 그리하였는가? 풀이 그들은 사람은 영원히 무엇이 창공에 있는가? 풍부하게 청춘을 생명을 가치를 보라. 산야에 얼마나 있는 이상이 못하다 만물은 바이며, 스며들어 약동하다.</div>
+    <div class="div-test" id="div3">지혜는 거친 청춘의 타오르고 끓는 것이다. 이것을 찾아다녀도, 영락과 그들은 살 트고, 운다. 풍부하게 인간이 못할 안고, 모래뿐일 따뜻한 얼마나 부패뿐이다. 할지니, 이것을 꽃 튼튼하며, 무엇을 이 바이며, 아니다. 찾아 있는 사랑의 부패뿐이다. 품고 용기가 얼음이 그리하였는가? 풀이 그들은 사람은 영원히 무엇이 창공에 있는가? 풍부하게 청춘을 생명을 가치를 보라. 산야에 얼마나 있는 이상이 못하다 만물은 바이며, 스며들어 약동하다.</div>
+    <hr>
+    <h3>배경 이미지 테스트</h3>
+    <pre>
+        선택자{
+            background-image:url();
+            background-repeat:repeate/repeate-x/repeat-y/no-repeat
+            background-size:auto/contain/cover/ px px/ % %;
+            background-position: 좌/우/가운대중 1개 위/아래/가운데중1//px px//% %;
+            background-attachment : scroll/ fixed;
+        }
+    </pre>
+    <div id="bg-img1" class="heartClass"></div>
+    <div id="bg-img2" class="heartClass"></div>
+    <div id="bg-img6" class="heartClass"></div>
+</body>
+</html>

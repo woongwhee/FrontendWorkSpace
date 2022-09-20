@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트랜지션관리스타일</title>
+    <style>
+        img{
+            margin-left: 200px;
+            width: 200px;
+            height:200px;
+        }
+        .translate:hover{
+            transform: translate(199px,200px); 
+            /* x축 199 y축 200을 이동한다. */
+        }
+        .transx:active{
+            transform : translateX(100px);
+        }
+        .transy:hover{
+            transform : translateY(-300px);
+        }
+        .transz:active{
+            transform : perspective(300px) rotateX(-30deg) skew(30deg ,30deg);
+        }
+        /* h3~p{
+            margin-left:200px;
+        } */
+        .scale:hover{
+            transform: scale(1.5);
+        }
+        .scaleX:hover{
+            transform: scaleX(1.5);
+            
+        }
+        .skew:hover{
+            transform:skew(300deg,300deg);
+        }
+        .transitiondiv{
+            width:100px;
+            height:100px;
+            border:1px red solid;
+            transition-property: transform,background-color;
+            transition-duration:5s;
+        }
+        input:checked~div{
+            background-color: rgb(114, 8, 8);
+            transform:translateX(500px);
+        }
+
+        .transition:hover{
+            background-color: purple;
+        }
+        .transi1{
+            transition-timing-function: linear;
+        }
+        .transi2{
+            transition-timing-function: ease;
+        }
+        .transi3{
+            transition-timing-function: ease-in;
+        }
+        .transi4{
+            transition-timing-function: ease-in-out;
+        }
+        .transi5{
+            transition-timing-function: ease-out;
+        }
+        .transi6{
+            transition-timing-function: step-end;
+        }
+        
+        .transi6{
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>트랜지션 관련 스타일</h1>
+    <h2>변형</h2>
+    <p>
+        태그가 특정동작에 의해서 (마우스 클릭, 마우스 올라감) 변형(이동,확대,찌그러짐) 되는것 
+    </p>
+    <h3>태그 이동시키기</h3>
+    <p>translate함수를 이용해서 설정된 태그가 특정위치로 이동하기</p>
+    <img class="translate" src="resources/image/peng.jpg" width="200" height="200">
+    <br>
+    <img class="transx" src="resources/image/peng.jpg" width="200" height="200">
+    <img class="transy" src="resources/image/peng.jpg" width="200" height="200">
+    <img class="transz" src="resources/image/peng.jpg" width="200" height="200">
+    <br><br><br>
+    
+    <p class="scale">안녕하세요 준입니다.</p>
+    <p class="scaleX">안녕하세요 준입니다.</p>
+    <img class="scale" src="resources/image/jun.png">
+    <img class="scaleX" src="resources/image/jun.png">
+
+    <h3>skew</h3>
+    <img class="skew" src="resources/image/bono.jpg">
+    <br><br><br>
+    <hr>
+    <h3>트랜지션 적용하기</h3>
+    <p>
+        태그가 변형속성에 의해 변형이 될대 "부드럽게" 변형이 될 수 있게 되는 속성들
+        transition-property: 적용할 속성.
+        transition-duration: 지속시간.
+        transition-timing-function: liner,ease,ease-in
+        transition: 한번에 모든 속성 지정가능
+    </p>
+    <input type="checkbox">
+    <div class="transitiondiv transition transi1"></div>
+    <div class="transitiondiv transition transi2"></div>
+    <div class="transitiondiv transition transi3"></div>
+    <div class="transitiondiv transition transi4"></div>
+    <div class="transitiondiv transition transi5"></div>
+    <div class="transitiondiv transition transi6"></div>
+    <div class="transitiondiv transition transi7"></div>
+
+    <br><br><br><br><br><br>
+</body>
+</html>

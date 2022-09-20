@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역 관련 스타일</title>
+    <style>
+        .test{
+            background-color: yellow;
+            border: 10px solid pink ;
+            width: 100px;
+            height: 100px;
+        }
+        #test1{
+
+            padding: 100px;
+            /* box-sizing: border-box; */
+        }
+        #test2{
+            padding-top: 50px;
+            padding-left: 100px;
+        }
+        #test3{
+            padding:50px 20px 30px 0px;
+            
+        }
+        #test4{
+            margin:50px;
+        }
+        #test5{
+            margin-top:50px;
+            margin-left:20px;
+        }
+        #test6{
+            margin: 50px 30px 20px 0px
+        }
+    </style>
+</head>
+<body>
+    <!--요소의 영역은 : content + border + padding-->>
+    <h1>여백 및 간격 관련 스타일</h1>
+    <h4>기준div</h4>
+    <div class="test">기준div</div>
+    <hr>
+    <h3>padding</h3>
+    <p>내용물영역(content)과 테두리영역(bolder)사이에 거리(여백)을 조정할수 있음 </p>
+    <div class="test" id="test1">컨텐츠 영역</div>
+    <b>padding: 100px</b>
+    <div class="test" id="test2">컨텐츠 영역</div>
+    <b>padding-top 50px; padding-left:100px</b>
+    <div class="test" id="test3">컨텐츠영역</div>
+    <b>padding :50px 20px  10px 0px (시계방햑으로 설정)</b>
+    <br>
+    <hr>
+    <div class="test" id="test4">컨텐츠영역</div>
+    <p>사이의 거리를 조정할수있음</p>
+    <b>margin : 50px</b>
+    <div class="test" id="test5">컨텐츠영역</div>
+    <b>margin-top:50px margin-left:20px</b>
+    <div class="test" id="test6">컨텐츠영역</div>
+    <b>margin: 50px30   px20px0px</b>
+    <br> <br>
+
+</body>
+</html>

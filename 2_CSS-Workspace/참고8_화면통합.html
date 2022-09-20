@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,input,button{
+            border:1px black solid;
+            box-sizing: border-box;
+        }
+        .wrap{
+            width: 1000px;
+            height: 800px;
+        }
+        /* header */
+        .header, .footer{
+            width: 100%;
+            height: 20%;
+            position: relative;
+        }
+        .navigate{
+            width:100%;
+            height: 10%;
+        }
+        .content{
+            width: 100%;
+            height: 50%;
+        }
+        
+        .header>div{
+            float:left;
+        }
+        #logo{
+            height:100%;
+            width: 25%;
+        }
+        #search{
+            height:100%;
+            width:50%;
+        }
+        #blank{
+            height:100%;
+            width:25%;
+        }
+        /* logo */
+        #logo>#logoimg{
+            /* display: block; */
+            width:100%;
+            margin:auto;
+            padding-top:30px;
+            vertical-align: middle;   
+        }
+        /* search */
+        #search_form{
+            width:40%;
+            height:20%;
+            margin:auto;
+            position:absolute;
+            right:0;
+            left:0;
+            top:0;
+            bottom:0;
+
+        }
+        #search_form>div{
+            height:100%;
+            
+            float:left;
+        }
+        #search_btn{width:20%}
+        #search_text{
+            width:80%
+        }
+        #search_form input{
+            width:100%;
+            height:100%;
+        }
+        /* navigator */
+        
+        #navi{
+            border-top:pink 1px solid;
+            border-bottom: 1px pink solid;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+            height: 100%;
+        }
+        #navi>li{
+            float: left;
+            width:15%;
+            height:100%;
+            text-align: center;
+        }
+        #navi a{
+            text-decoration: none;
+            text-align: center;
+            line-height: 40px;
+            color:pink;
+            font-size:14px;
+            font-weight: 450;
+            width: 100%;
+            height:100%;
+            display:block;
+        }
+        #navi a:hover{
+            font-size:16px;
+            color:rgb(254, 148, 166);
+        }
+        #navi>li>ul{
+            list-style-type: none;
+            padding:0;
+            display: none;
+        }
+        #navi>li>ul a{
+            font-size: 11px;
+            color:rgb(248, 223, 227)
+        }
+        #navi>li>ul a:hover{
+            font-size:13px;
+            color:pink;
+        }
+        #navi>li>a:hover+ul,#navi>li>ul:hover{
+            display:block;
+        }
+        /* content */
+        
+        
+        .content>div{
+            float:left;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        #content1{
+            width: 15%;
+        }
+        #content2{
+            width:55%
+        }
+        #content3{
+            width:30%;
+            height: 30%;
+            border: 1px pink double;
+            padding: 10px;
+            margin:5px;
+        }
+        #content3>form{
+            border: palevioletred 1px double;
+            height: 80%;
+        }
+        #loginform>*{
+            float: left;
+        }
+        #loginInput{
+            width: 65%;
+            height: 100%;
+        }
+        #loginInput>*{
+            
+            width: 90%;
+            height: 30%;
+            margin: 10px;
+        }
+        #loginbutton{
+            width: 25%;
+            height: 80%;
+            margin: 10px;
+        }
+        #loginbutton>button{
+            width: 100%;
+            height: 100%;
+
+        }
+        #login_form_etc{
+            height: 20%;
+            text-align: center;
+        }
+        #login_form_etc a{
+            color:black;
+            text-decoration: none;
+            margin:10px;
+            vertical-align: middle;
+            font-size:12px;
+        }
+        #footer{
+            width:100%;
+            
+        }
+        #footer>p{
+            width: 100%;
+            margin: 0;
+            border:solid 1px red;
+            box-sizing: border-box;
+            font-size:12px;
+            text-align: center;
+
+        }
+        .p0{
+            height: 15%;
+        }
+        .p1{
+            height: 70%;
+            
+        }
+        .p2{
+            height: 15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class=header1 id="logo">
+                <img id="logoimg"src="resources/image/kh_logo.jpg" >
+            </div>
+            <div  class=header2 id="search">
+                <form action="test.do" id="search_form">
+                    <div id="search_text">
+                        <input type="text" name="keyword" >
+                    </div>
+                    <div id="search_btn">
+                        <input type="submit" value="검색">
+                    </div>
+                </form>
+            </div>
+            <div class="header3" id="blank">
+
+            </div>
+        </div>
+       
+        <div class="navigator">
+            <ul id="navi">
+                <li id="java"><a href="">Java</a></li>
+                <li id="Oracle"><a href="">Oracle</a></li>
+                <li id="Front-end">
+                    <a href="">Front-end</a>
+                    <ul>
+                        <li id=""><a href="">HTML</a> </li>
+                        <li id=""><a href="">CSS</a> </li>
+                        <li id=""><a href="">JavaScript</a> </li>
+                        <li id=""><a href="">JQuary</a> </li>
+                    </ul>
+                </li>
+            <li id="Sever">
+                <a href="">Server</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><a href="">JSP</a></li>
+                    <li><a href="">Ajax</a></li>
+                </ul>
+            </li>
+            <li id="FrameWork">
+                <a href="">FrameWork</a>
+                <ul>
+                    <li><a href="">MyBatis</a></li>
+                    <li><a href="">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+
+        <div class="content">
+            <div id="content1">
+
+            </div>
+            <div id="content2">
+
+            </div>
+            <div id="content3">
+                <form id="loginform" action="test.do">
+                    <div id="loginInput">
+                        <input type="text" id="id" placeholder="아이디 입력">
+                        <input type="password" id="pwd" placeholder="비밀번호 입력">
+                    </div>
+                     <div id="loginbutton"><button type="submit">로그인</button></div>
+                </form>
+                <div id="login_form_etc">
+                    <a href="">회원가입</a>
+                    <a href="">ID/PWD찾기</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+                <p class="p0">KH정보교육원&nbsp;｜&nbsp;사업자등록번호 : 851-87-00622&nbsp;｜&nbsp;서울 강남 제2014-01호&nbsp;｜&nbsp;대표자 : 양진선&nbsp;｜&nbsp;책임자 : 최홍석&nbsp;｜&nbsp; 개인정보관리책임자 : 양진선</p>
+                <p class="p1">
+                강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F<br>
+                강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F<br>
+                강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F<br>
+                종로지원 : 서울특별시 중구 남대문로 120 대일빌딩 2F,  3F<br>
+                당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩 (구관) 19F, 20F <br>
+                </p>
+                <p class="p2">
+                    Copyright © 1998-2022 KH Information Educational Institute All Right Reserved
+                </p>
+        </div>
+    </div>
+</body>
+</html>

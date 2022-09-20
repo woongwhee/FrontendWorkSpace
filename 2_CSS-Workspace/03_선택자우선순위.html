@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자우선순위</title>
+    <style> 
+        h1{
+            background-color: pink;
+            color:yellow;
+        }
+        h1{
+            background-color: green;
+        }
+        #id1{
+            background-color: pink;
+        }
+        div{
+            background-color: teal;
+            color:red;
+            width:200px !important;
+            height:200px;
+
+        }
+        div[class="class1"]{
+            background-color: yellowgreen;
+            color:white;
+            width:300px;
+            
+        }
+        /* 즉 우선순위는 id>class>태그>작성순서 순이다 */
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+        <!-- <p style="color:aqua !important "> -->
+        <p>
+        기본적으로 css는 위에서부터 아래로 적용됨<br>
+        동일한 요소를 다양한 선택자로 css가 부여된경우 우선순위에 따라 적용됨<br>
+        태그선택자-> 클래스선택자 ->아이디선택자-> 인라인스타일방식-> !important 겹치지 않는 스타일 같은 경우는 반영됨.
+
+        important는 우선순위를 씹고 혼자 먹음
+        </p>    
+        <div id="id1" class="class1" style="background-color:blueviolet; color:pink">우선순위 테스트</div>
+    
+        
+        
+
+</body>
+</html>
