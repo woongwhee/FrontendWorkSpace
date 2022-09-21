@@ -1,0 +1,18 @@
+.area{
+    width: 500px;
+    height: 200px;
+    background-color: gray;
+    border:1px solid black;
+}
+.small{
+    height: 200px;
+}
+.big{
+    height:400px
+}
+h1{
+    color:pink;
+}
+h2{
+    color:antiquewhite
+}
