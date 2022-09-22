@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체2</title>
+    <style>
+        .area{
+            background-color: pink;
+            border:1px solid black;
+            height:250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체2</h1>
+    <h3>객체배열을 사용한 다량의 데이터 관리</h3>
+    <button onclick="test1()">실행확인</button>
+    <div class="area" id="area1"></div>
+    <script>
+        function test1(){
+            let student0={
+                name:'김갑생',
+                java:100,html:90,css:60,oracle:70
+            }
+            let student1={
+                name:'홍길동',
+                java:100,html:20,css:60,oracle:70
+            }
+            let student2={
+                name:'최민식',
+                java:99,html:92,css:63,oracle:88
+            }
+            let student3={
+                name:'황정민',
+                java:100,html:100,css:100,oracle:100
+            }
+            let students=[];
+            students.push(student0,student1,student2,student3);
+            for(let student of students){
+                student.javascript=100;
+                student.getSum=function(){
+                    return this.java+this.oracle+this.css+this.html+this.javascript;
+                }
+                student.getAvg=function(){
+                    return  this.getSum()/5;
+                }
+                console.log(student)
+            }
+            let area1=document.querySelector('#area1');
+            for(let student of students){
+                with(student){
+                    area1.innerHTML+=name+getAvg()+getSum()+javascript+java+oracle+java.css;
+                }
+            }
+
+        }
+    </script>
+    <h3>* t생성자 함수</h3>
+
+    <button onclick="test2();">실행확인</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function test2(){
+            let student0=new Student('김',100,100,100,100,100);
+            console.log(student0);
+        }
+        function Student(name,java,oracle,html,css,javascript){
+            //일반속성정의 부분
+            
+            this.name=name;
+            this.java=java;
+            this.oracle=oracle;
+            this.html=html;
+            this.css=css;
+            this.javascript=javascript;
+            //메소드 속성정의
+            this.getSum=function(){
+                return this.java+this.oracle+this.html+this.css+this.javascript;
+            }
+            this.getAvg=function(){
+                return this.getSum()/5;
+            }
+            this.toString=function(){
+                return '이름  총점 평균 자바 오라클 자바스크립트 html css<br>'+this.name+this.getSum()+" "+this.getAvg()+" "+this.java+this.oracle;
+            }
+        }   
+
+    </script>
+    <hr>
+    <h3>data 내장객체</h3>
+    <button onclick="test3()">tlfgodghkrdls</button>
+    <div class="area" id="area3"></div>
+    <script>
+        function test3(){
+            let area3= document.querySelector('#area3');
+            let date1 =new Date();//현재 날짜 및 시간
+            //2022년 9월 22일로 세팅.
+            let date2=new Date(2022,9-1,22);//시분초는 0으로 세팅
+            console.log(date2);
+            let date3=new Date(2022,8,22,17,48,33);
+            area3.innerHTML+=date3.getFullYear()+'<br>';
+            area3.innerHTML+=date3.getYear()+'<br>';
+            area3.innerHTML+=date3.getDay()+'<br>';//요일을 반환
+            area3.innerHTML+=date3.getDate()+'<br>';
+            //종갈일 dday구하기 
+            //종강일 디데이: xxx일 남았습니다.
+            let endDate=new Date(2023,1,21);
+            let toDayte=new Date();
+            let DDay=Math.ceil((endDate-toDayte)/1000/60/60/24)
+            area3.innerHTML+="종강일 D-Day : "+DDay+"일 남았습니다.";
+
+        }
+    </script>
+
+    <br><br><br><br><br><br><br>
+</body>
+</html>

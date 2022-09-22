@@ -79,5 +79,111 @@
 
         }
      </script>
+     <h3>* 객체의 메소드 속성  </h3>
+     <p>
+        객체의 속성중 함수 자료형인 속성을 메소드라고 부른다.
+     </p>
+     <div class="area" id="area4"></div>
+     <button onclick="test4();">실행하기</button>
+     <script>
+        function test4(){
+            let area4=document.getElementById("area4");
+            let cat={
+                name:'코코',
+                kind: "브리티쉬숏헤어",
+                eat : function(food){
+                    area4.innerHTML+='eat메서드가 호출되었습니다.';
+                    area4.innerHTML+=food;
+                    //객체의 필드(다른 키값)에 접근하려면 this를 제시해야된다.
+                    area4.innerHTML+=`${this.kind}인 ${this.name}가 ${food}를 먹고있어요`;
+                }
+            }
+            cat['eat']('츄르');
+            cat.eat('츄르');
+        }
+     </script>
+     <h3>* in과 with 키워드</h3>
+     <p>
+        in : 객체내에 해당속성이 잇는지 확인해 주는 키워드<br>
+        with : 객체명 제시하는것을 생략할 수 있음(코드를 줄여주는 키워드)
+     </p>
+     이름:<input type:"text" class:'score' name:"" id="name"><br>
+     국어:<input type:"text" class:'score'  name:"" id="kor"><br>
+     수학:<input type:"text" class:'score' name:"" id="math"><br>
+     영어:<input type:"text" class:'score' name:"" id="eng"><br>
+     <button onclick="test5();">실행확인</button>
+     <div class="area big" id="area5"></div>
+
+     <script>
+        function test5(){
+            let score=document.getElementsByClassName('score')
+            let student={
+                name:"민경민",
+                kor:90,
+                math:70,
+                eng:80,
+                getSum:function(){
+                    return this.kor+this.math+this.eng
+                },
+                getAvg:function(){
+                    return this.getSum()/3;
+                }
+            }
+            console.log('id' in score);
+
+            //in?
+            //"속성명" in 객체명: 해당 객체에 해당하는 속성이존재하면 true 반환 아니면 false반환
+
+            //with?
+            with(student){
+                area4.innerHTML+="학생이름 "+name+"<br>"
+                area4.innerHTML+="국어 "+kor+"<br>"
+                area4.innerHTML+="수학 "+math+"<br>"
+                area4.innerHTML+="영어 "+eng+"<br>"
+                area4.innerHTML+="총점 : "+getSum()+"<br>"
+                area4.innerHTML+="평균 : "+getAvg()+"<br>"
+
+            }
+        }
+     </script>
+
+     <h3>* 객체의 속성 추가 및 제거</h3>
+     <button onclick="test6()">실행확인</button>
+     <div class="area small" id="area6"></div>
+     <script>
+            function test6(){
+                let student={}
+                student.name="홍길동";
+                student.age="19";
+                student.hobby="게임";
+                student.dream="프로게이머";
+                console.log(student);
+                student.dream="영화감독"
+                console.log(student);
+                with(student){
+                    address="서울";
+                    dream="백수";
+                }
+                //with 에서는 새로운 속성 추가는 안되다.
+                console.log(student);
+
+                let area6=document.querySelector('#area6')
+                area6.innerHTML+="student : "+student+"<br>"
+                //메소드 속성추가
+                
+                student.toString=function(){
+                    return "이름 : "+this.name+"나이 : "+this.age+"취미 : "
+                    +this.hobby+"장례희망 : "+this.dream;
+                }
+                area6.innerHTML+="student : "+student+"<br>"
+                //객체의 속성제거
+                //객체의 속성제거
+                delete(student.hobby);
+                area6.innerHTML+="student : "+student+"<br>"
+                //hobby: undefinde;
+            }
+
+
+     </script>
 </body>
-</html>
+</html> 

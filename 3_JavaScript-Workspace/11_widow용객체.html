@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우용객체</title>
+    <style>
+        .area{
+            width: 300px;
+            height: 100px;
+            font-size:50px;
+            color:red;
+        }
+        .small{
+            height: 100px;
+        }
+        .big{
+            height: 300px;
+        }
+        .small,.big,.area{
+            background-color: pink;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>window용 객체</h1>
+    <p>
+        window객체는 자바스크립트의 최상위 객체이며 크게 Bom과 Dom으로 나뉨<br><br>
+        -BOM:(Browser Object Model): location객체 , screen객체,navigator객체,history객체
+        -DOM:(Document Object Model): document객체
+
+        <h4>-window.open('url','창이름','창특성')</h4>
+        <button onclick="test1()">네이버</button>
+        <script>
+            function test1(){
+                //첫번재 인자값 : 새창에서 열고하는 url주소
+                //두번째 인자값 : 창이름,창이름이 같은게 있으면 새로 열리지 않고 해당창에서 실행됨.
+                //세번째 인자값 ,새로 열릴 창의 넓이 , 높이 툴바, 스크롤바,상태표시줄여보
+                window.open('https://www.naver.com','123')
+
+                /*
+                    창의 특징
+                    ->ox
+                    width :창의높임
+                    height:창의 높이
+
+                    =>>yes/no
+                    resizable: 창크기 조절 가능 여부
+                    location : 주소창이 보일건지, 안보일지, 수정가능하게 할지 여부를 조절가능
+                    menubar:메뉴바를 보일건지 안보일건지
+                    scrollbars: 스크롤바를 보일건지 안보이게 할건지
+                    status:상태표시줄
+                    toolbar:도구모음
+                    크롬에서 적용되지 않는게 더 많음
+                */
+                window.open('https://www.naver.com','경민창','width=50, height=500, resizable=no location=no' )
+            }
+
+        </script>
+
+        <br>
+
+        <h3>*window객체의 timer관련 메소드 </h3>
+        <h4>-window.setTimeout(함수,ms)</h4>
+        <button onclick="test2();">실행확인</button>
+        <script>
+            function test2(){
+                // setTimeout(function()
+                // {
+                //     alert('3초뒤 출력예정');
+
+
+                // },3000);
+                    let newWindow=window.open();//새로 열린 창의 window객첼르 반환
+                    newWindow.alert('3초후 자동으로 닫히는 페이지')
+
+                    setTimeout(function(){
+                        newWindow.close();
+                    },4000)
+                    //setTimeout:내가제시한 일정 시간후에 작업을 수행하는데 "딱 한번만" 실행
+            }
+        </script>
+        <br>
+        <h4>-window.setInterval(함수,ms);</h4>
+        <button onclick="test3()">실행확인</button>
+        <div class="area" id="area1"></div>
+        <script>
+            function test3(){
+                let area1=document.querySelector("#area1"); 
+                setInterval(function(){
+                    let now=new Date()
+                    let hour=now.getHours();
+                    let min =now.getMinutes();
+                    let sec =now.getSeconds();
+                    let minsec=Math.round(now.getMilliseconds()/10);
+                    area1.innerHTML=`${hour}:${min}:${sec}.${minsec}`;
+                },10)
+
+            }
+        </script>
+            
+        <button onclick="BirthDayTimer()"> 실행</button><br>
+        <div class="area" id="area2"></div>
+        <script>
+            function BirthDayTimer(){
+                let brithDay= new BirthDay('진웅휘',9,15);
+                NextBirthDay=birthDay.NextBirthDay;
+                area2=document.getElementById('area2');
+                setInterval(function(){
+                    let gap=new Date().getTime - NextBirthDay.getTime;
+                    let dday=Math.floor(gap%(1000 * 60 * 60 * 24));
+                    let hour = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let min = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+                    let sec = Math.floor((gap % (1000 * 60)) / 1000);
+                    let minsec=Math.floor(((gap % (1000 * 60))));
+                    area2.innerHTML=`D-${dday} ${hour}:${min}:${sec}.${minsec}`;       
+                },10)    
+            }
+            class BirthDay{
+                constructor(name,month,day){
+                    this.name=name;
+                    this.month=month;
+                    this.day=day;
+                    let nowDay=new Date();
+                    let birthDay=new Date(nowDay.getFullYear,this.month-1,this.day);
+                    if(nowDay-birthDay<0){
+                        birthDay.setFullYear(nowDay.getFullYear+1);
+                    }
+                    this.NextBirthDay=birthDay;
+                }
+            }
+
+        </script>
+        <h3>*노드 생성과 관련된 메소드</h3>
+        <h4> - 텍스트노드가 존재하는 노드 생성(시작태그+끝태그) </h4>
+        <button onclick="test4()">실행확인</button>
+        <div class="small" id="area3"></div>
+        <script>
+            function test4(){
+                let elementNode=document.createElement("h3");
+                //2)textnode객체 생성 : documetn.createTextNode("문구");
+                let textNode=document.createTextNode("안녕하세요");
+                //3)두개 노드를 연결(요소노드의 하위노드로 텍스트노드 추가)
+                // 요소노드 . append childe(텍스트노드);
+                elementNode.appendchild(textNode);
+                //innerHTM은 문자열형태로만 전달가능
+                    //div요소 에 출력하고싶으면 appendChild를 이용해야함.
+                document.querySelector('#area3').appendChild(elementNode);
+            }
+
+        </script>
+
+    </p>
+</body>
+</html>
