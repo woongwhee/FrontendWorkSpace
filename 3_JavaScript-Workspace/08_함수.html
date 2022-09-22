@@ -110,4 +110,20 @@
         document.querySelector("#area6").innerHTML+=ran();
     }
 </script>
+
+<h3>익명함수를 리턴하는 함수</h3>
+이름: <input type="text" id="userName">
+<button onclick="test7()()()">실행확인</button>
+<script>
+    function test7(){
+        let myName=document.querySelector("#userName").value;
+        console.log(myName);
+        return function(){
+            alert("민경민님 환형합니다.");
+            return function(){alert(myName+"님 환형합니다.");}
+        }
+    }
+    // 함수의 리턴값으로 함수를 리턴하는경우 그 뒤에 ()를 붙이면 반환된 함수를 사용할수있다.
+</script>
+
 </html>

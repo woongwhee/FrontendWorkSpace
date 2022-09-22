@@ -5,8 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>간단계산</title>
+    <style>
+        .cul{
+            box-sizing: border-box;
+            float : left;
+            margin-left : 3px;
+            height: 20px;
+            border-radius: 5px;
+            border:1px black solid;
+        }
+        #result, .number{
+            width: 100px;
+        }
+        #result{
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <h1>Practice2</h1>
+    <div class="calcurator"> 
+    <input type="number" class="cul number" id="front" required>
+    <select name="operator" class="cul" id="operator">
+        <option class="oper" value="+">+</option>
+        <option class="oper" value="-">-</option>
+        <option class="oper" value="*">*</option>
+        <option class="oper" value="/">/</option>
+        <option class="oper" value="%">%</option>
+    </select>
+    <input type="number" class="cul number" id="rear" required>
+    <button onclick="calcurator()" class="cul">=</button>
+    <div  class="cul" id="result"></div>
+   </>
+    <script>
+        function calcurator(){
+            
+            let frontNum=Number(document.getElementById("front").value);
+            let oper=document.getElementById("operator").value;
+            let rearNum=Number(document.getElementById("rear").value);
+            let resultNum;
+            let result=document.getElementById('result');
+            result.style.backgroundColor="white";
+            result.style.color="black";
+            
+            switch(oper){
+                case '+':resultNum=frontNum+rearNum;break;    
+                case '-':resultNum=frontNum-rearNum;break;      
+                case '*':resultNum=frontNum*rearNum;break;    
+                case '/':resultNum=frontNum/rearNum;break;    
+                case '%':resultNum=frontNum%rearNum;break;    
+            }   
+            if(resultNum==Infinity||Number.isNaN(resultNum)||resultNum==-Infinity){
+                result.innerHTML="연산불가";
+                result.style.backgroundColor="red";
+                result.style.color="white";
+            }else{
+            
+            result.innerHTML=resultNum;
+            }
+        }
+            
+
+            
+    </script>
 </body>
 </html>
