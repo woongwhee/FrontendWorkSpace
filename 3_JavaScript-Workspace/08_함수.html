@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <link rel="stylesheet" href="areaStyle.css"></style>
+</head>
+<body>
+    <h1>함수</h1>
+    <h3>* 선언적 함수</h3>
+    <pre>
+        function 함수명(매개변수 , 매개변수 , .....){
+            해당함수 호출시 실행할 코드
+            return 결과값;
+        }
+        -매개변수가 없는 경우 매개변수 생략가능
+        -반환할 결과값이 없는 경우 return 결과값생략가능.
+    </pre>
+    <script>
+        function test1(){
+            document.querySelector("#area1").innerHTML+="test()함수실행됨<br>"
+        }
+        
+        // btn.onclick=function(){alert(이벤트발생)}
+    </script>
+</body>
+<div class="area" id="area1"></div>
+<button onclick="test1()" >실행확인</button>
+
+<h3>*익명함수</h3>
+<pre>
+
+    특정변수나 속성에 대입되는 함수 제시시 주로 사용됨(주로 이벤트 핸들러작성시 사용)
+</pre>
+<div class="area" id="area2"></div>
+<button class="btn2">실행확인</button>
+<script>
+    let btn2=document.querySelector("#area2");
+    btn2.onclick=function(){
+        document.querySelector("#area2").innerHTML+="클릭이벤트 발생!";
+    }
+
+</script>
+
+<h2>함수의 매개변수</h2>
+<div class="area" id="area3"></div>
+<button onclick="test3('안녕하세요')">실행확인</button>
+<button onclick="test3(10)">실행확인</button>
+<button onclick="test3([1,2,3,4])">실행확인</button>
+<button onclick="test3(true)">실행확인</button>
+<button onclick="test3(prompt('이름을 입력하쇼'))">실행확인</button>
+<button onclick="test3(10,'안녕하새용')">실행확인</button>
+<button onclick="test3()">실행확인</button>
+<button onclick="test3(this)">실행확인</button>
+<button onclick="test3()">실행확인</button>
+<script>
+    function test3(value){ //매개변수 제시시 자료형을 지정하지 않아도 됨.
+        document.querySelector("#area3").innerHTML=value;
+    }
+</script>
+<!-- 매개변수가 넘치는경우 전달값은 무시됨 매개변수가 더적은경우 undifined가전달됨 this를 전달시 해당객체가 전달됨 -->
+
+
+
+<h3> * 매개변수 관련 arguments 배열</h3>
+<p>
+    함수 호출시 전달되는 값은 내부적으로 arguments 배열에 담김<br>
+    *arguments : 모든 함수마다 내부적으로 하나씩 존재하는 배열객체
+</p>
+<button onclick="test4(1,44,6,33,6,77);" >아귀먼트 테스트</button>
+<div class="area" id="area4"></div>
+<script>
+    function test4(){
+        //console.log(arguments);
+        //console.log(arguments[0]);
+        let sum=0;
+        for(let i=0;i<arguments.length;i++){
+            sum+=arguments[i];
+        }
+        let avg=sum/arguments.length;
+        let area4=document.getElementById("area4");
+        area4.innerHTML=`총합${sum}<br>평균${avg}<br>${Math.round(Math.random()*99)+1}`;
+        // for(let i=0;i<1000;i++){1~99
+        //     area4.innerHTML+=Math.round(Math.random()*99)+1+" ";
+        // }
+    }
+</script>
+<h3>*매개변수 있는 함수에 this관련 전달하기</h3>
+<button onclick="test5(this);">this테스트</button>
+<button onclick="test5(this.innerHTML)">버튼2</button>
+<button id="bts"onclick="test5(this.id)">버튼2</button>
+<input type="button" onclick="test5(this.value)"value="button">
+<script>
+    function test5(a){
+        console.log(a);
+    }
+</script>
+<h2>함수의 리턴</h2>
+<h3>* 일반적인 값 리턴</h3>
+<button onclick="test6()">실행확인</button>
+<div class="area" id="area6"></div>
+<script>
+    function ran(){
+        let random = parseInt(Math.random()*100+1);
+        return random;
+    }
+    function test6(){
+        document.querySelector("#area6").innerHTML+=ran();
+    }
+</script>
+</html>

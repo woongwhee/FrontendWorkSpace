@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textbox{
+            border: 1px solid red;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div><p>"체크 박스 선택 후 “카테고리 선택“을 누르면 하단 네모에 선택한 카테고리 출력
+        이 때, “전체 선택“ 체크 박스 선택 시 모든 카테고리가 선택 되며, 선택 해제 시 모두 선택 해제 됨 또한 카테고리 체크박스를 전부 선택하면 “전체 선택“ 체크 박스가 선택되고
+        하나라도 선택이 되어있지 않으면 “전체 선택“ 체크 박스는 선택 해제 됨."></p></div>
+        <!-- 리팩토리이: 개발자가--> -->
+    <form action="" class="checkForm">
+        <fieldset class="checkFiledSet">
+            <legend>취미</legend>
+            <input type="checkbox" id="selectAll"   value="전체선택"  onclick="checkAll();">
+            <label for="selectAll">전체선택</label>
+            <input type="checkbox" name="hobby" id="All"value="종합"><label for="All">종합</label>
+            <input type="checkbox" name="hobby" id="novel"value="소설"><label for="novel">소설</label>
+            <input type="checkbox" name="hobby" id="poem"value="시/에세이"><label for="poem">시/에세이</label>
+            <input type="checkbox" name="hobby" id=""value="경제/경영"><label for="">경제/경영</label>
+            <input type="checkbox" name="hobby" id=""value="">자기개발<label for="">자기개발</label>
+            <input type="checkbox" name="hobby" id="child"value="아동"><label for="child">아동</label>
+            <input type="checkbox" name="hobby" id="travle"value="여행"><label for="travle">여행</label>
+            <input type="checkbox" name="hobby" id="science"value="과학"><label for="science">과학</label>
+            <input type="checkbox" name="hobby" id="histroy"value="역사 / 문화"><label for="histroy">역사/문화</label>
+            <input type="checkbox" name="hobby" id="language"value="외국어"><label for="language">외국어</label>
+            <input type="checkbox" name="hobby" id="computer"value="컴퓨터"><label for="computer">컴퓨터</label>
+            <input type="checkbox" name="hobby" id="comics"value="만화"><label for="comics">만화</label>
+        </fieldset>
+    </form>
+    <button onclick="checkBoxSelect2();" id="checkbutton">카테고리선택</button>
+    <div id= "area1"class="textbox"></div>
+    <script src="bookcategory.js"></script>
+</body>
+</html>
