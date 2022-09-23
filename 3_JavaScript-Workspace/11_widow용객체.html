@@ -22,6 +22,9 @@
             background-color: pink;
             border:1px solid black;
         }
+        #pepeimg{
+            float:left;
+        }
     </style>
 </head>
 <body>
@@ -30,6 +33,7 @@
         window객체는 자바스크립트의 최상위 객체이며 크게 Bom과 Dom으로 나뉨<br><br>
         -BOM:(Browser Object Model): location객체 , screen객체,navigator객체,history객체
         -DOM:(Document Object Model): document객체
+        </p>
 
         <h4>-window.open('url','창이름','창특성')</h4>
         <button onclick="test1()">네이버</button>
@@ -73,7 +77,7 @@
 
 
                 // },3000);
-                    let newWindow=window.open();//새로 열린 창의 window객첼르 반환
+                    let newWindow=window.open('https://www.google.com','123','width:100,height:100,status:no, menubar:no ');//새로 열린 창의 window객첼르 반환
                     newWindow.alert('3초후 자동으로 닫히는 페이지')
 
                     setTimeout(function(){
@@ -131,12 +135,31 @@
                     this.NextBirthDay=birthDay;
                 }
             }
-
-        </script>
+            
+            </script>
+        <button onclick="location.href='https://www.naver.com'">네이버로</button>
+        <button onclick="location.href=location.href">새로거침</button>
+        <h1>screen</h1>
+        <button onclick="console.log(screen)">screen</button>
+        <!-- 해상도에 따라 가로새로정보 -->
+        <button onclick="console.log(navigator)">navigator</button>
+        <!-- 브라우저에대한 정보  -->
+        <button onclick="console.log(navigator.userAgent)">navigator.userAgent</button>
+        <!-- 브라우저에대한 정보  -->
+        <button onclick="console.log(history)">history</button>
         <h3>*노드 생성과 관련된 메소드</h3>
+        <p>
+            Dom(document object model)<br>
+            Html에 있는 각각의 태그들을 노드라고 한다
+            --요소노드 :태그 그자체만을의미<br>
+            -텍스트노드 태그내에 그록된노드<br>
+            텍스트노드가 존재하지 않는 요소(시작태그와 종료태그가 한쌍으로 이루어져있음):div a h1 p pre
+            텍스트노드가 존재하지 않는요소(시작태그로만 이루어져 잇음):img input 
+        </p>
         <h4> - 텍스트노드가 존재하는 노드 생성(시작태그+끝태그) </h4>
         <button onclick="test4()">실행확인</button>
         <div class="small" id="area3"></div>
+        
         <script>
             function test4(){
                 let elementNode=document.createElement("h3");
@@ -145,13 +168,39 @@
                 //3)두개 노드를 연결(요소노드의 하위노드로 텍스트노드 추가)
                 // 요소노드 . append childe(텍스트노드);
                 elementNode.appendchild(textNode);
+                   //동적 <->정작
+                console.log(elementNode)
+                console.log(typeof elementNode)
                 //innerHTM은 문자열형태로만 전달가능
                     //div요소 에 출력하고싶으면 appendChild를 이용해야함.
                 document.querySelector('#area3').appendChild(elementNode);
             }
 
         </script>
+        
+        <h4>택스트 노드가 존재하지 않는 노드생성(시작태그만 존재한다)</h4>
+        <button onclick="test5();">페페</button>
+        <div class="big" id="area4"></div>
+        <button onclick="test6();">삭제</button>
+        <button onclick="test7();">전체삭제</button>
+        <script>
+            function test5(){
+                let img = document.createElement("img");
+                img.src="https://mblogthumb-phinf.pstatic.net/MjAyMTEwMDVfMjkz/MDAxNjMzNDE5NDM5MzY1.C69FSduuaiTt9LkMykKzsMu2YpWQk50LHninjXFSbNcg.yvzNU4LUEaHd-5VKTgzzfkm8kuXikMnE1VFtm4gj7-Ag.JPEG.parkamsterdam/IMG_3467.JPG?type=w800";
+                img.width='100';
+                img.height='70';
+                
+                img.id='pepeimg';
+                
+                let area4=document.querySelector('#area4');
+                area4.appendChild(img);
+                
+            }
+            function test6(){
+                let area4=document.querySelector('#area4');
+                area4.firstChild.remove();
+            }
 
-    </p>
+        </script>
 </body>
 </html>
