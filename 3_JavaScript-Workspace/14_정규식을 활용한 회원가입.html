@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입폼</title>
+  <style>
+    form{
+      border: 1px solid gray;
+      padding : 20px
+    }
+    label{
+      color:gray;
+      font-size:10px ;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <form action="insert.do">
+    *아이디 : <input type="text" name="userId" id="userId" required><br>
+    <label>첫글자는 반드시 영문자로 그리고 영문자 ,숫자를 포함하게 작성하세요</label>
+    <br><br>
+    *비밀번호 : <input type="password" name="password" id="password" required><br>
+    <label>영문자, 숫자, 특수문자로 총 8~15자로 입력하세요</label><br><br>
+    *비밀번호 확인 : <input type="password" name="password2" id="password2" required><br>
+    <label>위의 비밀번호가 일치하게 입력하시오</label><br><br>
+    *이름 : <input type="text" name="userName" id="userName">
+    <label>한글로만 이루워저야되며 2글자 이상으로 입력하세요</label><br><br>
+    *이메일 : <input type="email" name="userEmail" id="userEmail" required>
+    취미: <input type="text" name="hobby" id="hobby" placeholder="야구,농구,축구,독서" list="hobbyList">
+    <datalist id="hobbyList">
+      <option value="soccer">축구</option>
+      <option value="basketball">농구</option>
+      <option value="bassball">야구</option>
+      <option value="readbook">독서</option>
+    </datalist><br>
+    거주지:<select name="address" id="address">
+    <option value="seoul">서울</option>
+    <option value="busan">부산</option>
+    <option value="incheon">인천</option>
+  </select>
+    <input type="submit"  value="회원가입" onclick="validate()" >
+    <input type="reset"  value="취소"  >
+  </form>
+
+  <script >
+    function validate(){
+      let userId=document.querySelector("#userId");
+      let userPwd=document.querySelector("#password");
+      let userPwd2=document.querySelector("#password2");
+      let userName=document.querySelector("#userName");
+      let pwdReg=/^[a-zA-Z\d!@#$]{8,15}$/
+      let idReg=/^[a-z]+[a-z\d]{3,11}$/
+      let nameReg=/^[가-힣]{2,}$/
+      console.log(userId.value);
+      console.log(idReg.test(userId.value));
+
+      if(!idReg.test(userId.value)){
+        alert('유효한 아이디를 입력해주세요.');
+        userId.select();
+        userId.value=""
+        return false;
+      }
+      if(!pwdReg.test(userPwd.value)){
+        alert('유효한 비밀번호를 입력해주세요');
+        userPwd.value=""
+        userPwd.focus();
+        return false;
+      }
+      if(userPwd.value!=userPwd2.value){
+        alert('동일한 비밀번호를 입력해주세요')
+        userPwd2.value="";
+        return false;
+      }
+      if(!nameReg.test(userName.value)){
+        alert('유효한이름을 입력해주세요');
+        userName.value="";
+        userName.focus();
+        return false;
+      }
+      return true;
+    }
+
+
+  </script>
+</div>
+
+</body>
+</html>
