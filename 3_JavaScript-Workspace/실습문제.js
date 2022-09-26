@@ -2,7 +2,7 @@
 //1번 -가들어간 문자를 카멜표기법 문자열로 반환하는함수
 let str='background-color'
 function CSStoKamel(str){
-    str.toLowerCase();
+    str=str.toLowerCase();
     let new_str=str.split('-');
     let result=new_str[0];
     for(let i =1 ;i<new_str.length;i++){

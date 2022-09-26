@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        function setClock(){
+            let dateInfo = new Date();
+            let dinnerTime = new Date();
+
+            dinnerTime.setHours(18);
+            dinnerTime.setMinutes(20);
+            dinnerTime.setSeconds(0);
+            dinnerTime.setMilliseconds(0);
+
+            let hour = modifyNumber(dateInfo.getHours());
+            let min = modifyNumber(dateInfo.getMinutes());
+            let sec = modifyNumber(dateInfo.getSeconds());
+            let year = dateInfo.getFullYear();
+            let month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+            let date = dateInfo.getDate();
+            let dhour=Math.floor((dinnerTime-dateInfo)/(1000*60*60));
+            let dmin=Math.floor((dinnerTime-dateInfo)/(1000*60));
+            if(dhour<0){
+                dhour=24+dhour
+            };
+            if(dmin<0){
+                dmin=60+dmin };//음수라 더해줘야되네...
+            let dsec=modifyNumber(60-dateInfo.getSeconds());
+            let dmsec=modifyNumber(dateInfo.getMilliseconds());
+            document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+            document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+            document.getElementById("timmer").innerHTML=dhour+":" +dmin+":"+dsec+":"+dmsec;
+            changeBackground();
+
+        }
+        function modifyNumber(time){
+            if(parseInt(time)<10){
+                return "0"+ time;
+            }
+            else
+                return time;
+        }
+        function changeBackground(){
+            // dinnerTime=document.getElementById("dinnertimmer");
+            // if(dinnerTime.style.backgroundColor=='purple'){
+            //     dinnerTime.style.backgroundColor='red';
+            // }else if(dinnerTime.style.backgroundColor=="red"){
+            //     dinnerTime.style.backgroundColor="blue";
+            // }else if(dinnerTime.style.backgroundColor=="blue"){
+            //     dinnerTime.style.backgroundColor="white";
+            // }else{
+            //     dinnerTime.style.backgroundColor="purple";
+            // }
+        }
+        window.onload = function(){
+            setClock();
+            setInterval(setClock,1000); //1초마다 setClock 함수 실행
+        }
+    </script>
+    <style>
+
+        #dinnertimmer{
+            background-image:url("Heart.png");
+            background-position: center;
+            background-size:200px 200px;
+            background-repeat: no-repeat;
+            width:450px;
+            height: 210px;
+            border:lightpink 10px double;
+            animation:HeartBeating 0.4s infinite alternate;
+        }
+        @keyframes HeartBeating {
+            form{
+                background-size:200px 200px;
+            }
+            to{
+                background-size:300px 300px ;
+            }
+        }
+        
+        .date{
+            font-size:30px;
+            color: gray /* 날짜가 표기되는 텍스트 색상 */
+        }
+        #mesage{
+            color: red;
+            font-size: 40px;
+        }
+        .time,.timmer{
+            font-size: 50px; /* 원하는 폰트 사이즈 */
+            font-weight: bold;
+            color: black;
+
+        }
+        .mesage2{
+            font-size:60px;
+            color:pink;
+        }
+    </style>
+</head>
+<body>
+<div id="dinnertimmer">
+    <div id="date" class="date"></div>
+    <div id="time" class="time"></div>
+<div id="mesage">저녁식사까지 남은시간</div>
+<div id="timmer" class="timmer"></div>
+
+
+</div>
+<div class="mesage2"> 심장이 저녁밥을 향해 뛰고있다..</div>
+
+</body>
+
+</html>

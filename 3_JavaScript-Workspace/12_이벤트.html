@@ -175,10 +175,10 @@
             console.log(userId);
             console.log(regExp.test(userId));
 
+            document.querySelector('userId').select();//사용자가 다시입력하도록유도
             if(!regExp.test(userId)){
             //정규표현식 객체에서 제공하는 test함수: 해당 정규 표현식을 만족하면 true 아니면 false를 반환
                 alert('유효한아이디가 아닙니다. 다시입력해주세요')
-                document.querySelector('userId').select();//사용자가 다시입력하도록유도
                 return false;
             }
             
@@ -191,3 +191,4 @@
     </script>    
 
 </body>
+</html>

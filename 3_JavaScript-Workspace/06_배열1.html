@@ -211,11 +211,11 @@
     <script>
             //every :모든요소가 사용자가 구현한 테스트함수를 통과하는지 확인한다
            function forEachTest(){ 
-                       let arr7=["대치동","역삼동","삼성동","서초동"];
-            let includesDong=function(value){
-               return value.includes('동');
-            }
-            console.log(arr7.every(includesDong));//true;
+               let arr7=[{dong:"대치동"},{dong:"역삼동"},{dong:"삼성동"},{dong:"서초동"}];
+               let includesDong=function(value){
+                   return value.dong.includes('동');
+               }
+                console.log(arr7.every(includesDong));//true;
             //forEach:모든 요소들에 해당 함수를 실행한다. 매개변수는 값,인덱스,배열순으로 사용 할 수 있다.(생략가능);
             let arr=[1,2,3,4,5,6,7,8]
             
@@ -236,7 +236,7 @@
                 console.log(`${item}은 ${arr}의 ${index}에 있습니다.`);               
             }
             // arr.forEach(doing);//이러면 value값이 안바뀐다. 이때사용하는게 map
-            arr.forEach(doing0);//이러면 value값이 안바뀐다. 이때사용하는게 map
+            arr.forEach(doing3);//이러면 value값이 안바뀐다. 이때사용하는게 map
             console.log(arr);//1,2,3,4,5,6,7,8
             let obj1={
                 kim : '김민용',
@@ -248,13 +248,12 @@
             
             //map: 각요소별로 지정된 함수의 실행결과로 구성된 새로운 배열을 반환.
             
-            let mapTest=function(value,index){
-                if(index%2==0){
-                    return value*index;}
-            }    
+            let mapTest=function(value,index,arr,응애){
+                console.log(value,index,arr,응애)
+            }
 
-            arr=arr.map(mapTest);
-                console.log(arr);//0, undefined, 6, undefined, 20, undefined, 42,undefined 인데벨류에 
+               arr=arr.map(mapTest);
+               console.log(arr);//0, undefined, 6, undefined, 20, undefined, 42,undefined 인데벨류에
             }     
     </script>
     <h4>배열탐색 (find,filter) : 객체로 이루워진 배열에서 내가원하는 값을 찾을때 주로 사용</h4>   
