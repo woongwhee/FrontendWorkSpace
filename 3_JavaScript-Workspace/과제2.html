@@ -53,30 +53,20 @@
         <input type="text" id="serachById"><button>검색</button>
     </div>
     <script>
-        let searchTitle=document.getElementById('searchTitle');
-        let searchDate=document.getElementById('searchDate');
-        let searchAutor=document.getElementById('searchAuthor');
-        searchTitle.addEventListener('click',function (){
-            let hiddenPage=document.querySelectorAll('.hiddenPage');
-            for (let i = 0; i <hiddenPage.length; i++) {
-                hiddenPage[i].style.display='none';
+        let search=document.getElementsByClassName('search')
+
+        let hiddenPage=document.getElementsByClassName('hiddenPage')
+        for (let i = 0; i < search.length; i++) {
+            search[i].addEventListener('onchange',function (){
+                let checked=document.querySelector('input[name="search"]:checked');
+                if(search[i]=checked){
+                    hiddenPage[i].style.display='block';
+                } else{
+                    hiddenPage[i].style.display='none';
+                }
             }
-            document.getElementById('titlePage').style.display='block';
-        })
-        searchDate.addEventListener('click',function (){
-            let hiddenPage=document.getElementsByClassName('hiddenPage');
-            for (let i = 0; i <hiddenPage.length; i++) {
-                hiddenPage[i].style.display='none';
-            }
-            document.getElementById('datePage').style.display='block';
-        })
-        searchAutor.addEventListener('click',function (){
-            let hiddenPage=document.querySelectorAll('.hiddenPage');
-            for (let i = 0; i <hiddenPage.length; i++) {
-                hiddenPage[i].style.display='none';
-            }
-            document.getElementById('authorPage').style.display='block';
-        })
+            )
+        }
     </script>
 </body>
 </html>

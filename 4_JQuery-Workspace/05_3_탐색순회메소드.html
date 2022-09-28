@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>탐색순회(동위)메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap *{
+            border: 1px solid lightgray;
+            display:block;
+            margin:15px;
+            padding:5px;
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">조상
+        <div>div 증조할머니
+            <ul>ul 할머니
+                <li>li 엄마
+                    <span>나</span>
+
+                </li>
+            </ul>
+            <div>div 할아버지
+                <h5>더작은삼촌</h5>
+                <h4>작은삼촌</h4>
+                <h2>큰삼촌</h2>
+                <h3>큰아빠</h3>
+                <p>p 아빠
+                    <span> 동생</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <p>
+        <h4>-$(선택자).siblings()</h4>
+
+        선택된 요소의 같은 레벨의 모든 요소들을 선택
+
+        <h4>- $("선택자").siblings("선택자")</h4>선택된 요소의 같은 레벨 중 제시한 선택자와 일치하는 요소들을 선택
+    <h3>다음</h3>
+        <h4>- $("선택자").next("선택자")</h4>선택된 요소의 같은 레벨에 있는 요소들중 바로 다음요소 딱 하나만 선택(+같은녀석)
+    <h4>- $("선택자").nextAll()</h4>선택된 요소의 같은 레벨에 있는 요소들중 다음에 오는 요소 전부 선택
+    <h4>- $("선택자").nextUntil('선택자')</h4>선택된 요소의 같은 레벨에 있는 다음 요소들중에 제시한 값과 일치하는 요소들 까지만 선택
+    <h3>이전</h3>
+
+    <h4>- $("선택자").prev()</h4>
+        <h4>- $("선택자").prevAll()</h4>
+        <h4>- $("선택자").prevUtil()</h4>
+    </p>
+    <script>
+        $(function (){
+            let style={red:{color:"red",border:"2px solid red"},
+                skyBlue:{color:"skyBlue",border:"2px solid skyBlue"},
+                yellow:{color:"yellowGreen",border:"2px dashed yellow"},
+                pink:{color:"lightPink",backgroundColor:"aqua"},
+                orange:{color:"darkOrange",border:"2px dotted darkOrange"}};
+            //siblings
+            $('h2').siblings().css(style.red);
+            $('h2').siblings("p").css(style.skyBlue);
+            $('h2').next().css(style.yellow)
+            $('h2').nextAll().css(style.pink)
+            $('h2').nextUntil('p').css("font-size","3em");
+            $('h2').prev().css(style.pink);
+            $('h2').prevAll().css("borderStyle","dashed")
+            $('h2').prevUntil().css('backgroundColor','yellow');
+        })
+
+    </script>
+</body>
+</html>

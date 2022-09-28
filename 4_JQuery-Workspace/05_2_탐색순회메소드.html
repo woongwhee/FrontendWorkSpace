@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>탐색순회메소드(자손)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap *{
+            border: 1px solid lightgray;
+            display:block;
+            margin:15px;
+            padding:5px;
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">조상
+        <div>div 증조할머니
+            <ul>ul 할머니
+                <li>li 엄마
+                    <span>나</span>
+
+                </li>
+            </ul>
+            <div>div 할아버지
+                <p>p 아빠
+                    <span>
+                        동생
+                    </span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <p>
+        <h4>-$('선택자').children()</h4>
+        선택된 요소의 모든 자손 요소들을 선택
+
+        <h4>- $("선택자").children("선택자")</h4>
+        선택된 요소의 자손중 선택자와 일치하는 요소들을 선택
+
+        <h4>- $("선택자").find("선택자")</h4>
+        선택된 요소의 후손중 선택자와 일치하는 요소들을 선택
+
+    </p>
+
+    <script>
+        $(function (){
+            let style={red:{color:"red",border:"2px solid red"},
+                blue:{color:"blue",border:"2px solid blue"},
+                yellow:{color:"yellowGreen",border:"2px dashed yellowGreen"},
+                pink:{color:"pink",border:"2px dashed pink"},
+                orange:{color:"darkOrange",border:"2px dotted darkOrange"}};
+            $('.wrap').children().css(style.red);//자손
+            $('.wrap').children().children().css(style.blue)//손자
+            $('.wrap').children().children('ul').css(style.yellow);//손자중 선택
+            $('.wrap').find('li').css(style.pink);//후손중 선택
+            $('.wrap').find('span').css(style.orange);//후손중 선택
+        })
+
+    </script>
+
+</body>
+</html>

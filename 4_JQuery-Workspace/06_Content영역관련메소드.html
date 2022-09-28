@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Content 영역 관련 메소드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Content 영역 (innerHTML,innerText)관련메소드</h1>
+    <h3>* html("문구")메소드: innerHTML 속성 과 관련된 메소드</h3>
+    <p>
+        선택된 요소의 Content 영역 (시작태그와 종료태그 사이)를 리턴해주거나 변경해주는 메소드?메소드맞음?<br>
+
+    </p>
+    <h1 id="test1">test1<a href="">네이버로</a></h1>
+    <h1 id="test2">test2</h1>
+
+    <script>
+        $(function (){
+
+            let temp= document.getElementById("test1").innerHTML
+            console.log(temp);
+
+            let temp2=$('#test1').html();
+            console.log(temp2);
+
+            $('#test2').html(temp2);
+
+        })
+
+
+    </script>
+
+</body>
+</html>
