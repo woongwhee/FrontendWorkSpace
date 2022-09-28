@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>추가적인선택자</title>
+  <script src="resource.js"></script>
+  <style>
+      .pinkStyle{
+        background-color: pink;
+      }
+
+  </style>
+
+</head>
+<body>
+    <h1>추가적인 선택자</h1>
+<!--    <h3>* 자손선택자(>) 후손선택자</h3>-->
+
+    버튼 : <input type="button" value="" id="a1"><br>
+    글상자 : <input type="text" id="a2"><br>
+    체크박스 : <input type="checkbox" id="a3"><br>
+    파일: <input type="file" id="a4"><br>
+    비밀번호: <input type="password" id="a5"><br>
+    라디오:<input type="radio" id="a6"><br>
+    리셋: <input type="reset" id="a7"><br>
+    제출: <input type="submit" id="a8"><br>
+    <script>
+        $(function (){
+          //첨부파일배경을 연두색으로
+            $('input[type="file"]').css('backgroundColor','lightGreen');
+          //비밀번호 배경을 노란색으로
+            $('input[type="password"]').css('backgroundColor','yellow');
+
+          //라디오 버튼을 checked속성추가 가로50px  세로 50ㅔㅌqusrud
+          //   $('input[type="radio"]').attr('checked',true).css({width:"50px",height:"50px"})
+          //초기화버튼: 배경색을 파란색 글자색 흰색 테두리 없애기
+            $('input[type="reset"]').css({borderStyle:"soild",backgroundColor:"white"})
+          //제출버튼 : 클릭시 alert()가실행되도록
+            $('input[type="submit"]').click(()=> alert($(':password').val()))
+            //mouseenter: 선택된 요소의 경계 내부로 마우스가 들어갈때 발생하는 이벤튼.
+            // $(':submit').mouseenter(function(){
+            //     //$(this)현재 객체
+            //     $(this).addClass('pinkStyle');
+            //     //addClass: 선택된 요소에 클래스를 추가시켜주는역할.
+            // })
+            // //mouseout:
+            // $(':submit').mouseout(function () {
+            //     $(this).removeClass('pinkStyle');
+            //     //removeClass 선택된 요소에 클래스를 제거해주는 클래스
+            // })
+            //한큐에 해결 hover(mouseenter,mouseout)
+            $(':submit').hover(function(){
+                $(this).addClass('pinkStyle');
+            },function () {
+                $(this).removeClass('pinkStyle');
+            });
+
+        })
+
+
+
+    </script>
+    <br><br><br><br><br>
+    <h3>*상태선택자(selected,checked,disabled,enabled)</h3>
+    <h4>checked(radio,checkbox)</h4>
+    <p>
+        체크되어있는 입력양식 선택<br>
+        input:checked
+    </p>
+    취미:
+    <input type="checkbox" name="hobby" id="c1" value="game"><label for="c1">게임</label>
+    <input type="checkbox" name="hobby" id="c2" value="movie">영화
+    <input type="checkbox" name="hobby" id="c3" value="music">무직
+    <button id='btn' type="button">실행확인</button>
+
+    <script>
+        $(function(){
+            //버튼 클릭시 현재 checked 상태인 요소를 선택하서 스타일부여
+            $('#btn').click(
+                function (){
+                 $('input:checkbox:checked').css({width:"400px",height:"400px"})
+                }
+            )
+            $(':checkbox').change(function () {
+                    if($(this).prop("checked")){
+                        $(this).css({width: "40px",height: "40px"})
+                    }else{
+                        $(this).css({width:"",height:""});
+                    }
+
+                }
+            )
+
+        })
+
+    </script>
+    <h4>- selected 상태선택자(select>option)</h4>
+    <p>
+        option객체중 선택한 태그를 선택<br>
+        option:selected
+    </p>
+    국가 :
+    <select name="national">
+        <option value="x">선택안함</option>
+        <option value="ko">한국</option>
+        <option value="us">미국</option>
+        <option value="eu">유럽</option>
+    </select>
+
+    <button onclick="test();">확인</button>
+    <br>
+    선택한 나라 : <label id="result">선택안함</label>
+    <script>
+        //틀에 관한 함수가 아니면 레디펑션으로 감쌀필요없을지도?
+        function test(){
+            //현재선택되어있는 목록값 가저오기
+            console.log($('[name="national"]>option:selected').val(),$('[name="national"]>option:selected').html());
+            $('#result').html($("option:selected").html());
+
+        }
+
+    </script>
+    <h4>-disabled, enabled 상태선택자</h4>
+    <p>
+        활성화/비활서오하된 입력양식을 선택<br>
+        [#아이디>]:enabled
+        [#아이디>]:disabled
+
+    </p>
+    <div id="wrap">
+        <input type="text"><br>
+        <input type="text" disabled><br>
+        <input type="button" value="활성화버튼"><br>
+        <input type="button" value="비활성화버튼"disabled><br>;
+
+
+    </div>
+
+    <script>
+        $(function (){
+            $('#wrap>:enabled').css("backgroundColor","yellowGreen");
+            $('#wrap>:disabled').css("backgroundColor","gray");
+        })
+
+
+    </script>
+
+</body>
+</html>

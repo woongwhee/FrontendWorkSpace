@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>기본선택자</title>
+  <script src="resource.js"></script>
+</head>
+<body>
+  <h1>기본선택자</h1>
+  <h3>*아이디선택자</h3>
+  <p>
+    특정 고유한 아이디값을 가진 요소 하나만을 선택하고자할때
+  </p>
+  <div id="id1">id1</div>
+  <div id="id2">id2</div>
+  <script !src="">
+    //순수자바스크리브방식=> document.getElementById('아이디명')
+    //선택된 요소 객체의 속성에 접근해 값을변경할때
+    $(function(){
+      document.getElementById('id1').style.color='red';
+      document.querySelector('#id1').innerHTML='응애'
+      //jQuery방식=>$('선택자')
+      //선택된 요소 객체에 메소드를 이용해서 값을변경
+      $('#id2').css("color",'pink');
+      $('#id2').html('응애')
+    })
+  </script>
+  <h3>*태그선택자</h3>
+  <p>java</p>
+  <p>oracle</p>
+  <p>jdbc</p>
+<br>
+  <h5>Html</h5>
+  <h5>css</h5>
+  <h5>JavaScript</h5>
+
+  <script>
+  $(function(){
+    let p= document.getElementsByTagName('p');
+    console.log(p);//HTMLColection
+    //Array 함수를 사용못한다.
+    //방법1. 빈배열에 집어넣는다.
+    [].forEach.call(p ,function (e){
+      console.log(e);
+      e.style.color = "pink";
+    })
+    console.log(p);//HTMLColection
+    //방법2
+    Array.from(p , function(e){
+    e.style.color="red";
+    });
+    console.log(p);//HTMLColection
+    //방법3 강사님 선임이 썼던함수
+    p = Array.prototype.slice.call(p);
+    console.log(p);//Array
+    // p.forEach(value=>value.style.color="blue");
+    // for (let i = 0; i < p.length; i++) {
+    //     p[i].style.color='blue'
+    // }
+    $('h5').css('color','lightPink');
+    $('h5,h3,p').css('color','pink');
+  })
+  </script>
+  <hr>
+  <h3>*클래스 선택자</h3>
+  <p>
+    특정한 클래스 속성을 가진 요소들을 선택하고자 할때사용
+  </p>
+  <h1 class="item" id="fxfx">class1</h1>
+  <h1 class="item select" name="응애">class2</h1>
+  <h1 class="item select" name="응애">class3</h1>
+  <script >
+    $(function (){
+      let item=document.getElementsByClassName('item');
+      for (let i = 0; i <item.length; i++) {
+        item[i].style.color='orange';
+        item[i].onclick=function (){
+          item[i].innerHTML+='클릭!';
+        }
+      }
+      $('.item').attr('name','ㅇㅇ');
+      $('[name="ㅇㅇ"]').html('앗세이 기열');
+
+    })
+    /*
+    * 제이쿼리에서의 selecter는 css의 selecter와 같다.
+    * $(.className)==selectAll('.className');
+    * $(#idName)==select('#idName');
+    * 제이쿼리에서의 속성값 변경 방법
+    * 일반적인 방법
+    * 클래스명.(,)
+    *
+    */
+  </script>
+  <input type="text"><br>
+  <input type="number" class="test tes1"><br>
+  <input type="range"><br>
+  <progress id="fxff" min="1" max="100" > </progress>
+  <input type="checkbox"><br>
+  <input type="button" class="test2">
+  <input type="button" value="버튼" class="st2">
+  <script>
+    $(function(){
+      $('[class]').css('backgroundColor','red');
+
+      $('input[type="text"]').val('change');
+
+      $('input[class*="test"]').val('test완료');
+      $('[type="range"]').val(100);
+      $('#fxff').val(10);
+      $('input[type="checkbox"]').attr('checked',true);//undefined false null은 false취급 나머지는 아니네?
+
+      $('input[class*=st2]').css({width:'200px',height:'200px'}).val('버튼').css("color","yellow");
+    })
+  </script>
+</body>
+</html>

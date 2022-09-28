@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구매정보</title>
+    <style>
+        #outputBox{
+            box-sizing: border-box;
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        #amount{
+            width: 60px;
+        }
+        #field{
+
+            box-sizing: border-box;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="buyInfo">
+        <fieldset id="field">
+            <legend>구매정보</legend>
+            <ul>
+                <li> 구매자명 : <input type="text" name="구매자명" id="buyer" placeholder="구매자정보를 입력하세요"></li>
+                <li>상품명 : <input type="text" name="상품명" id="product" placeholder="구매 상품명을 입력하세요"></li>
+                <li>가격 : <input type="number" id="price" placeholder="구매가격을 입력하세요"></li>
+                <li>구매수량 : <input type="number" name="구매수량" id="amount" placeholder="최소 10" ></li>
+                <li>납품등급 <input type="range" id="grid" min="1" max="9" step="2" value="1" onchange="valueSynchro()"><span id="gridValue">1</span></li>
+                <li>기타사항 :<br><textarea name="기타사항" id="guitar" cols="30" rows="10"></textarea></li>
+            </ul>
+
+        </fieldset>
+        <br>
+        <button onclick="submit()">입력값출력하기 </button>
+        <br><br>
+        <div id="outputBox">
+        </div>
+    </div>
+    <script>
+        function valueSynchro(){
+           let grid=document.getElementById('grid').value;
+            document.getElementById("gridValue").innerHTML=grid;
+        }
+        function submit() {
+            if(!vaildate()){return};
+            let outputBox=document.getElementById('outputBox');
+            outputBox.innerHTML+="구매자 명 : "+document.getElementById('buyer').value+"<br>";
+            outputBox.innerHTML+="상품 명 : "+document.getElementById('product').value+"<br>";
+            outputBox.innerHTML+="가격 : "+document.getElementById('price').value+"만원<br>";
+            outputBox.innerHTML+="구매수량 : "+document.getElementById('amount').value+"개<br>";
+            outputBox.innerHTML+="납품등급 : "+document.getElementById('grid').value+"등급<br>";
+            outputBox.innerHTML+="기타사항 : "+document.getElementById('guitar').value;
+
+
+        }
+        function vaildate(){
+            let buyer=document.getElementById('buyer');
+            let product=document.getElementById('product');
+            let price=document.getElementById('price');
+            let amount=document.getElementById('amount');
+            if(buyer.value.length==0){
+                alert('구매자명을 입력해주세요');
+                buyer.focus();
+                return false;
+            }
+            if(product.value.length==0){
+                alert('상품명을 입력해주세요');
+                product.focus();
+                return false;
+            }
+            if(price.value==0){
+                alert('가격을 입력해주세요');
+                price.focus()
+                return false;
+            }
+            if(amount.value<10){
+                alert('최소구매수량은 10입니다.');
+                amount.focus();
+                return false
+            }else if(amount.value>100){
+                alert('최대구매수량은 100입니다.');
+                amount.focus();
+                return false
+            }
+            return true;
+        }
+    </script>
+
+
+</body>
+</html>

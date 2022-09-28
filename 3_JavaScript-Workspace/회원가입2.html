@@ -40,40 +40,9 @@
             color: green;
             font-size:80px;
         }
-        .clause{
-            overflow:scroll;
-            border: 2px gray solid;
-            border-radius: 3px;
-            width:400px;
-            height:200px
-        }
-
 
     </style>
-    <script>
-        let userList=[
-            {userId:'user01',name:'유저1'},
-            {userId:'user02',name:'유저2'},
-            {userId:'user03',name:'유저3'},
-            {userId:'user04',name:'유저4'},
-            {userId:'user05',name:'유저5'},
-        ]
-        function checkSameId(){
-            let inputId=document.getElementById('userId').value;
-            let regExp=/^[a-zA-Z0-9]{5,20}$/
-            console.log(regExp.test(inputId))
-            console.log(inputId);
-            if(userList.every((e)=>(e.userId!=inputId))||
-            regExp.test(inputId)){
-                alert("사용할수있는 아이디입니다.")
-            }else{
-                alert("사용 할 수 없는 아이디입니다.")
-            };
 
-        }
-        function checkAll(){
-            let firstCheck=document.getElementById();
-        }
 
     </script>
 </head>
@@ -83,70 +52,61 @@
         <div class="header" id="header2">
         <img src="naverLogo.png" alt="네이버 이미지"></div>
         <div class="header" id="header3">네이버</div>
-
-
     </header>
     <main>
         <div>
             <fieldset id="회원가입양식">
                 <legend ><h4>회원가입 양식</h4></legend>
                 <div> *이름 <br>
-                    <input type="text" id="userName" required>
+                    <input type="text" id="userName" required><label for="userId">이름</label>
                 </div>
                 <div> *아이디 <br>
                     <input type="text" id="userId" placeholder="영문 소문자,대문자 5~20" required>
-                    <button id="checkId" onclick="checkSameId()" >중복확인</button>
+                    <button id="checkId" onclick="checkSameId()" >중복확인</button><span id="waring" hidden="true">이미 존재하는 아이디입니다.</span>
                 </div>
                 <div name="passwordInput"> *비밀번호<br>
                     <input type="password" id="userPwd" placeholder="영문,숫자,특수문자 8~15"maxlength="15" minlength="8" required>
                 </div>
-                <div id="passwordInput"> *비밀번호 재확인<br>
-                    <input type="passwordd" check="userPwd">
 
-                <div id="JumiNumInput">*주민등록번호<br>
-                   <input type="number" name="RearJnum" pattern="\d*" maxlength="6" style="width:80px" required>-
-                   <input type="passwordd" name="RearJnum" maxlength="7" style="width:80px" required></div>
-                <div name="GenderInput">성별<br>
-                    <input type="radio" name="gender" value="noneSelect"> 선택하지 않음
-                    <input type="radio" name="gender" value="male"> 남자
-                    <input type="radio" name="gender" value="female"> 여자
-                </div>
-                <div name="brithdayInput">*생년월일 <br>
-                    <input type="date" required>
-                </div>
-                <div name="addressInput">주소<br>
-                    <input type="text" >
-                </div>
-                <div name="postcodeInput">우편번호<br>
-                    <input type="number" name="postcode" style="width:80px;">
-                    <button name="findpostcode">우편번호 찾기</button>
-                    <input type="checkbox" id="postcodecheckbox" name="우편 수신 동의"><label for="postcode">우편 수신 동의</label>
-                </div>
-                <div name="emailInput">이메일<br>
-                    <input type="email" >
-                    <input type="checkbox" id="emailcheckbox">
-                    <label for="emailcheckbox">이메일 수신 동의</label>
-                </div>
-                <div name="phonenumberInput">휴대폰 번호<br>
-                    <select name="firstNum">
-                        <option value="010">010</option>
-                        <option value="011">011</option>
-                        <option value="016">016</option>
-                        <option value="017">017</option>
-                        <option value="018">018</option>
-                        <option value="019">019</option>
-                    </select> -
-                    <input type="text" name="secondNum" maxlength="4"  title="휴대전화 중간자리" style="width:60"> -
-                  <input type="text" name="finalNum" maxlength="4"  title="휴대전화 뒷자리" style="width:60">
-                </div>
-                    <div id="finash">
-                        <button type="reset" name="reset">초기화</button>
-                        <button type="submit" name="SignIn">가입하기</button></div>
+                <div id="passwordInput"> *비밀번호 재확인<br>
+                    <input type="passwordd" check="userPwd"></div>
+                    <br>
+                    <button type="submit" name="SignIn">가입하기</button>
 
             </fieldset>
         </div>
     </main>
     <footer>
     </footer>
+    <script>
+        let userList=[
+            {userId:'user01',name:'유저1'},
+            {userId:'user02',name:'유저2'},
+            {userId:'user03',name:'유저3'},
+            {userId:'user04',name:'유저4'},
+            {userId:'user05',name:'유저5'},
+        ]
+
+        function checkSameId() {
+            let userInputId = document.getElementById('userId');
+            let regExp = /^[a-zA-Z0-9]{5,20}$/
+            console.log(regExp.test(userInputId.value))
+            console.log(!userList.every((e) => (e.userId != userInputId.value)));
+            if (!userList.every((e) => (e.userId != userInputId.value))) {
+                console.log('여기까진 왔음');
+
+                userInputId.style.borderColor = 'red';
+                document.getElementById('waring').hidden = false;
+                userInputId.onkeydown(function () {
+                    userInputId.style.borderColor = 'black';
+                    document.getElementById('waring').hidden = true;
+                })
+            }
+        }
+
+        function checkAll(){
+            let firstCheck=document.getElementById();
+        }
+        </script>
 </body>
 </html>
