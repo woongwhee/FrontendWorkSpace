@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        #wrap2{
+            color: red;
+            background-color: yellow;
+            font-size:4em;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>이벤트 핸들러(이벤트발생시 실행 될 function) 연결 방법 종류</h1>
+    <h3>    *방법1: 이벤트 메소드를 통한 연결</h3>
+    <pre>
+        $("선택자").이벤트메소드(function(){
+        };)
+    </pre>
+    <h4 id="test1">클릭해보세요.</h4>
+    <script>
+        $(function () {
+                $("#test1").click(function () {
+                    $(this).html("클릭되었습니다!!!");
+                })
+                $("#test1").dblclick(function(){$(this).css('color','pink')})
+            })
+    </script>
+    <h3>*방법2: on 메소드를 이용한 방법</h3>
+    <pre>
+        $("선택자").on("이벤트명",function(){
+        })
+    </pre>
+
+    <h4 id="test2">마우스를 올려서 클릭해봐</h4>
+    <script>
+        $(function (){
+            $("#test2").on("click",function (){
+               $(this).css("font-size","3em")
+            });
+            //on 메소드를 이용해 이벤트 연결가능
+            //한 요소에 다중 이벤트 걸기가 가능함.
+            //화살표함수에 this키워드는 안먹힌다.?
+            $('#test2').on({"mouseenter":function(){
+                    $(this).css("backgroundColor","pink").text("마우스가 올라감");
+            },"mouseout":(e)=>{$(e.target).css("backgroundColor","white").text("마우스나감")}
+            ,"click":(e)=>{
+                $(e.target).off("mouseenter").off("mouseout").css("backgroundColor","white").text("끝")
+                }
+            })
+        })
+    </script>
+    <br><br>
+    <h3>* 방법3</h3>
+    <pre>
+        $("상위요소선택자").on("이벤트명","하위요소선택자",function(){
+            선택된 상위요소 안에 존재하는 해당 하위요소에 해당 이벤트가 발생햇을때 실행할 내용
+        };)
+        동적으로 추가한 하위요소에 이벤트가 적용되 유용하다
+    </pre>
+    <div id="wrap">
+        <h4>클릭해주세요 h4</h4>
+        <h5>클릭해주세요 h5</h5>
+    </div>
+    <script>
+
+        $(function (){
+            $("#wrap").on("click","h4",function(){
+                $(this).html("클릭되었습니다");
+            })
+            $(document).on("click","h4,h5",function (){
+                $(this).css("color","pink");
+            })
+        })
+
+    </script>
+    <h3>동적으로 만들어진 요소에도 동일한 이벤트를 적용시키고자 한다면 방법3로 진행</h3>
+    <div id="wrap2" style="border:1px solid black">
+        <h6>기존요소</h6>
+
+    </div>
+    <script>
+        $(function () {
+            $("#wrap2>h6").click(function (){
+                $("#wrap2").append("<h6>클릭생성요소</h6>")
+            })
+            $("#wrap2").on("click","h6",function () {
+                for(let i=0;i<100;i++){
+                $('#wrap2').append("<span>앗쎄이 기열</span>")};
+            })
+        })
+    </script>
+    <hr>
+    <h3>*(일회성 이벤트)</h3>
+    <p>
+        이벤트를 딱 한번만 연결할때 사용<br>
+        $('선택자').one("이벤트명",function(){
+            이벤트가 발생시 실행할 내용<br>
+        })
+    </p>
+
+    <script>
+        $(function (){
+            $("wrap2").one("click","span",
+                function (){
+                    $(this).empty();
+
+                }
+            )
+        })
+    </script>
+    <h3>키보드관련이벤트</h3>
+    <p>
+        -keydown/keypress:키가눌러질때 발생하는 이벤트<br>
+        -keydown:모든키 -keypress:펑션 기능 한글을 제외한 나머지키<br>
+        -keyup:키가때어질때   발생하는 이벤트
+    </p>
+    <input type="text" id="test4">
+    <script>
+        $(function () {
+            $("#test4").keydown(
+                function () {
+                    console.log($(this).val());
+                }
+            )
+            $("#test4").keypress(
+                function () {
+                    console.log("$(this).val()");
+                }
+            )
+            $("#tett4").keyup(
+                function () {
+                  console.log('dd');
+                })
+        })
+
+    </script>
+
+
+</body>
+
+</html>
