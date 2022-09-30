@@ -143,8 +143,23 @@
         })
 
     </script>
-
-
+    <h3>*동적으로 글자수새기</h3>
+    <div>
+        150자내로 작성하시오. <br>
+        <textarea  id="content" cols="30" rows="10" style="resize:none" maxlength="150"></textarea>
+        <!-- 한글에선 maxlengthrk woeofh wkrehddksehla -->
+        <br>
+        <span id="count">0</span>/150
+    </div>
+    <script>
+        $(function(){
+            $('#content').keyup(function(){
+                if($(content).val().length<=150)
+                $("#count").text($(this).val().length); 
+                    
+            });
+        })
+    </script>
 </body>
 
 </html>

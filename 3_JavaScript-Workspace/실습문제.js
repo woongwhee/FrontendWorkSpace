@@ -107,3 +107,24 @@ let test2=(element)=>(((element=="rudals")?"밥은 좝솼서?":""));
 [1,2,3,4,5].forEach((item)=>(console.log(item)));
 
 [1,2,3,4,5].filter((item,index)=>(index!=0?item%2==0?true:false:false));
+
+
+
+
+
+function funtest(){
+    console.log("함수임");
+}
+function test2(funtest){
+    funtest();
+    return funtest;
+}
+function test3(funtest){
+
+    return funtest;
+}
+function test4(funtest){
+    
+    return funtest;
+}
+test2(test3(test4(funtest)));
